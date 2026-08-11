@@ -1,5 +1,134 @@
-<section class="h-[3000px]"> 
-    <h3>{{ohio}} </h3>
-    <h1>  {{title}}  </h1>
-    <button class="text-5xl border-4 border-black cursor-pointer hover:text-green-400 text-yellow-400" [disabled]="clicked" (click)="handleClick()">Button</button>
+<!-- Hero -->
+<section class="relative mt-[10rem] overflow-hidden px-10 ">
+ <div class="max-w-7xl mx-auto flex flex-col min-[900px]:flex-row items-center justify-center min-[900px]:justify-between gap-10">
+    <!-- Left: Text -->
+    <div class="flex flex-col gap-4 max-w-[25rem] min-[900px]:max-w-xl">
+      <p class="text-white text-[20px]">
+        Hello Sir, thank for giving me a change by checking my profile. My Name is
+        <span class="text-[#e05252] font-bold">Has Bunroeun</span>
+      </p>
+
+      <h1 class="text-white text-[40px] font-bold leading-tight">Junior</h1>
+
+      <h2 class="text-[40px] font-bold leading-tight">
+        <span class="bg-gradient-to-r from-[#3b82f6] to-[#a78bfa] bg-clip-text text-transparent">UX/UI Designer </span>
+        <span class="text-white">and</span>
+      </h2>
+
+      <h2 class="text-[40px] font-bold leading-tight">
+        <span class="bg-gradient-to-r from-[#22d3ee] to-[#3b82f6] bg-clip-text text-transparent">Frontend Developer</span>
+      </h2>
+
+      <div class="flex items-center gap-4 mt-4">
+        <button class="bg-[#7c6ff0] hover:bg-[#6a5ce0] text-white px-6 py-3 font-semibold cursor-pointer">
+          Email Me
+        </button>
+        <button class="border-2 border-[#3b82f6] text-white hover:bg-[#3b82f6]/10 px-6 py-3 font-semibold cursor-pointer">
+          Contact Me
+        </button>
+      </div>
+    </div>
+
+    <!-- Right: Photo -->
+    <div class="shrink-0">
+      <img
+        src="profile-img/profile.png"
+        alt="profile image"
+        class="max-w-[25rem] border-[10px] border-black"
+      >
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Who Am I? -->
+<section class="relative overflow-hidden px-10 py-20 ">
+  <!-- Red diagonal accent line -->
+  <div class="absolute top-0 left-0 w-[2px] h-[150%] bg-[#e05252] rotate-[20deg] origin-top-left"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10 flex flex-col gap-16">
+
+    <!-- Who Am I -->
+    <div class="flex flex-col gap-4 max-w-full">
+      <h2 class="text-[#3b82f6] text-[40px] font-bold">Who Am I?</h2>
+      <p class="text-white/80 text-[30px] leading-relaxed">
+        Fourth-year Information Technology Engineering student passionate about UX/UI design and
+        frontend development. I enjoy creating user-friendly digital experiences and turning ideas into
+        responsive web applications with some of the basic about User Psychology Included
+      </p>
+    </div>
+
+   <!-- Skills -->
+<div class="flex flex-col gap-6">
+  <h2 class="text-[40px] font-bold">
+    <span class="bg-gradient-to-r from-[#3b82f6] to-[#a78bfa] bg-clip-text text-transparent">Skills</span>
+  </h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <!-- Frontend -->
+    <div class="border-2 border-[#3b82f6] rounded-md p-5 flex flex-col gap-3">
+      <h3 class="text-white text-[20px] font-bold">Frontend</h3>
+      <ul class="list-disc list-inside text-white/80 text-[20px] flex flex-col gap-1">
+        <li>HTML5 & Semantic Markup</li>
+        <li>CSS3 (Flexbox, Grid, Animations)</li>
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+        <li>React & Hooks</li>
+        <li>Next.js</li>
+        <li>Responsive Web Design</li>
+      </ul>
+    </div>
+
+    <!-- UX/UI Design -->
+    <div class="border-2 border-[#3b82f6] rounded-md p-5 flex flex-col gap-3">
+      <h3 class="text-white text-[20px] font-bold">UX/UI Design</h3>
+      <ul class="list-disc list-inside text-white/80 text-[20px] flex flex-col gap-1">
+        <li>Figma</li>
+        <li>Framer</li>
+        <li>Wireframing & Prototyping</li>
+        <li>Userflow</li>
+        <li>User-Centered Design</li>
+        <li>Information Architecture</li>
+        <li>Basic User Psychology</li>
+      </ul>
+    </div>
+
+    <!-- Backend & Database -->
+    <div class="border-2 border-[#3b82f6] rounded-md p-5 flex flex-col gap-3">
+      <h3 class="text-white text-[20px] font-bold">Backend & Database</h3>
+      <ul class="list-disc list-inside text-white/80 text-[20px] flex flex-col gap-1">
+        <li>Firebase Authentication</li>
+        <li>MySQL (Basic)</li>
+        <li>Laravel (Basic)</li>
+      </ul>
+    </div>
+
+    <!-- Tools -->
+    <div class="border-2 border-[#3b82f6] rounded-md p-5 flex flex-col gap-3">
+      <h3 class="text-white text-[20px] font-bold">Tools</h3>
+      <ul class="list-disc list-inside text-white/80 text-[20px] flex flex-col gap-1">
+        <li>Git & GitHub</li>
+        <li>VS Code</li>
+        <li>npm</li>
+        <li>Vite</li>
+      </ul>
+    </div>
+
+    <!-- Additional Skills -->
+    <div class="border-2 border-[#3b82f6] rounded-md p-5 flex flex-col gap-3">
+      <h3 class="text-white text-[20px] font-bold">Additional Skills</h3>
+      <ul class="list-disc list-inside text-white/80 text-[20px] flex flex-col gap-1">
+        <li>Mobile-First Design</li>
+        <li>Performance Optimization</li>
+        <li>REST API Integration</li>
+        <li>Problem Solving</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  </div>
 </section>

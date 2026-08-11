@@ -1,0 +1,48 @@
+<nav
+  class="bg-[#55534d] border-b-[3px] border-[#3a6ff7] fixed top-0 left-0 right-0 z-50 transition-transform duration-300"
+  [class.-translate-y-full]="isHidden()"
+>
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-10 py-4">
+    <div class="text-[30px] font-bold">
+      <span class="text-white">B</span><span class="text-[#c9a7f7]">R</span>
+    </div>
+
+    <!-- Desktop nav: visible above 710px -->
+    <div class="hidden min-[711px]:flex items-center text-[20px] gap-8">
+      <ul class="flex items-center gap-7 list-none m-0 p-0">
+        <li><a href="#" class="text-white no-underline text-[20px] font-semibold pb-1 underline underline-offset-4">Home</a></li>
+        <li><a href="#" class="text-white no-underline text-[20px] font-semibold pb-1 hover:underline hover:underline-offset-4">Project</a></li>
+        <li><a href="#" class="text-white no-underline text-[20px] font-semibold pb-1 hover:underline hover:underline-offset-4">About Me</a></li>
+        <li><a href="#" class="text-white no-underline text-[20px] font-semibold pb-1 hover:underline hover:underline-offset-4">Contact</a></li>
+      </ul>
+
+      <button class="bg-[#7c6ff0] hover:bg-[#6a5ce0] text-white border border-white px-5 py-2 font-semibold cursor-pointer">
+        Hire Me
+      </button>
+    </div>
+
+    <!-- Hamburger button: visible at/below 710px -->
+    <button
+      class="max-[710px]:flex hidden flex-col gap-[5px] cursor-pointer"
+      (click)="toggleMenu()"
+      aria-label="Toggle menu"
+    >
+      <span class="w-7 h-[3px] bg-white"></span>
+      <span class="w-7 h-[3px] bg-white"></span>
+      <span class="w-7 h-[3px] bg-white"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu dropdown -->
+  @if (isMenuOpen()) {
+    <div class="max-[710px]:flex hidden flex-col items-start gap-6 px-10 py-6 bg-[#55534d] border-t border-[#3a6ff7]">
+      <a href="#" class="text-white no-underline text-[18px] font-semibold">Home</a>
+      <a href="#" class="text-white no-underline text-[18px] font-semibold">Project</a>
+      <a href="#" class="text-white no-underline text-[18px] font-semibold">About Me</a>
+      <a href="#" class="text-white no-underline text-[18px] font-semibold">Contact</a>
+      <button class="bg-[#7c6ff0] hover:bg-[#6a5ce0] text-white border border-white px-5 py-2 font-semibold cursor-pointer w-full">
+        Hire Me
+      </button>
+    </div>
+  }
+</nav>

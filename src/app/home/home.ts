@@ -1,6 +1,5 @@
 import { Component, VERSION } from '@angular/core';
 import { version } from 'os';
-
 @Component({
   selector: 'app-home',
   imports: [],
