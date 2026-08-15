@@ -233,8 +233,11 @@ export class Home {
     }
   }
 
+  filterAnimationKey = 0;
+
   setProjectFilter(filter: 'all' | 'fullstack' | 'frontend') {
     this.selectedProjectFilter = filter;
+    this.filterAnimationKey++;
   }
 
   get filteredProjects(): Project[] {
@@ -277,22 +280,60 @@ Sent from Bunroeun's Portfolio`;
 
 
 
-  readonly skillCategories: SkillCategory[] = [
+  readonly contactInfo = {
+    name: 'Has Bunroeun',
+    role: 'Full-Stack Developer & UX/UI Designer',
+    degree: 'Bachelor of Information Technology Engineering',
+    email: 'bunroeunhas@gmail.com',
+    phone: '0966928501',
+    telegram: 'https://t.me/HasBunRoeun',
+    telegramHandle: '@HasBunRoeun',
+    linkedin: 'https://www.linkedin.com/in/has-bunroeun-b48761373',
+    language: 'English (Upper-Intermediate)'
+  };
 
+  readonly relevantCoursework = [
+    { title: 'User Interface Design & Development', icon: '🎨', badge: 'UI/UX', desc: 'Design systems, auto-layout, typography, breakpoints & interactive patterns.' },
+    { title: 'Artificial Intelligence & Ethics', icon: '🤖', badge: 'AI Engine', desc: 'AI models, prompt engineering, Gemini API integrations & tech ethics.' },
+    { title: 'Project Management & Agile', icon: '📊', badge: 'Delivery', desc: 'Sprint planning, client iteration cycles & multi-project coordination.' },
+    { title: 'Cryptography & Security', icon: '🔐', badge: 'Security', desc: 'RSA, Diffie-Hellman key exchange, SHA-512 & data security.' },
+    { title: 'Software Testing & QA', icon: '🧪', badge: 'Quality', desc: 'Test-Driven Development (TDD), xUnit & Moq mocking frameworks.' },
+    { title: 'Game Development (Unity/C#)', icon: '🎮', badge: 'Interactive', desc: 'Game architecture, 2D physics & interactive state loops (Flappy clone).' }
+  ];
+
+  readonly skillCategories: SkillCategory[] = [
     {
-      title: 'Frontend Engineering',
+      title: 'Frontend Development',
       icon: 'frontend',
-      badge: 'Core Expertise',
+      badge: '2 Years Experience',
       color: 'from-cyan-500 to-blue-500',
       skills: [
-        'HTML5 & Semantic Markup',
-        'CSS3, Flexbox & Grid',
-        'JavaScript (ES6+)',
-        'TypeScript',
+        'React.js',
+        'Next.js',
         'Angular (Signals & Standalone)',
-        'React & Next.js',
+        'TypeScript',
+        'JavaScript (ES6+)',
+        'HTML5 / CSS3',
         'Tailwind CSS',
-        'Responsive Design'
+        'Laravel Blade',
+        'Alpine.js',
+        'Responsive Design',
+        'Component Design'
+      ]
+    },
+    {
+      title: 'Backend & Database',
+      icon: 'backend',
+      badge: 'Full-Stack Foundations',
+      color: 'from-emerald-500 to-teal-500',
+      skills: [
+        'Laravel / PHP',
+        'MySQL Database',
+        'MVC Architecture',
+        'CRUD Development',
+        'RESTful API Design',
+        'Database Migrations',
+        'Form Validation & Auth'
       ]
     },
     {
@@ -301,52 +342,26 @@ Sent from Bunroeun's Portfolio`;
       badge: 'Design Systems',
       color: 'from-purple-500 to-pink-500',
       skills: [
-        'Figma & Auto-Layout',
-        'Framer Prototyping',
-        'Wireframing & Userflows',
-        'User-Centered Design',
-        'Information Architecture',
-        'User Psychology Basics',
-        'Design Token Systems'
+        'Figma (Auto-Layout & Components)',
+        'Wireframing & Prototyping',
+        'User Flows & Information Architecture',
+        'Mobile-First Layouts',
+        'Interactive UI Patterns (Carousels/Tabs)',
+        'User Psychology Foundations'
       ]
     },
     {
-      title: 'Backend & Database',
-      icon: 'backend',
-      badge: 'API & Data',
-      color: 'from-emerald-500 to-teal-500',
-      skills: [
-        'Firebase Authentication',
-        'MySQL Database',
-        'Laravel & PHP',
-        'RESTful API Integration',
-        'CRUD Architecture'
-      ]
-    },
-    {
-      title: 'Tools & Workflow',
+      title: 'DevOps, Tools & Coursework',
       icon: 'tools',
-      badge: 'DevOps & Tooling',
+      badge: 'Engineering Toolkit',
       color: 'from-amber-500 to-orange-500',
       skills: [
-        'Git & GitHub',
-        'VS Code & Extensions',
-        'npm & Package Management',
-        'Vite & Build Tools',
-        'Postman API Testing'
-      ]
-    },
-    {
-      title: 'Key Competencies',
-      icon: 'additional',
-      badge: 'Practices',
-      color: 'from-indigo-500 to-violet-500',
-      skills: [
-        'Mobile-First Architecture',
-        'Performance Optimization',
-        'Component Reusability',
-        'Cross-Browser Compatibility',
-        'Agile Problem Solving'
+        'Git & GitHub Version Control',
+        'Hostinger Deployment & .env Config',
+        'Unity / C# Game Development',
+        'Gemini AI API Integration',
+        'Software Testing (xUnit/Moq, TDD)',
+        'Cryptography (RSA, Diffie-Hellman, SHA-512)'
       ]
     }
   ];
