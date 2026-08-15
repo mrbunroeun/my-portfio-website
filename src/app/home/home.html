@@ -535,9 +535,22 @@
               </div>
 
               <!-- Action Buttons -->
-              <div class="flex items-center gap-3 pt-3 border-t border-white/[0.08]">
+              <div class="flex items-center gap-2.5 pt-3 border-t border-white/[0.08]">
+                <!-- Case Study Details Button (for projects with detailed case studies) -->
+                @if (project.caseStudy) {
+                <button type="button" (click)="openCaseStudy(project)"
+                  class="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:via-indigo-500 hover:to-violet-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all cursor-pointer">
+                  <svg class="w-4 h-4 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span>View Details & Specs</span>
+                </button>
+                }
+
                 <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank" rel="noopener noreferrer"
-                  class="flex-1 inline-flex items-center justify-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-md transition-colors no-underline cursor-pointer">
+                  [ngClass]="project.caseStudy ? 'bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700' : 'flex-1 bg-blue-600 hover:bg-blue-500 text-white shadow-md'"
+                  class="inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-4 py-2.5 rounded-xl transition-colors no-underline cursor-pointer">
                   <span>Live Demo</span>
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -554,8 +567,9 @@
                   </svg>
                 </a>
 
-                <!-- NDA Badge when codeUrl is not provided -->
-                <div *ngIf="!project.codeUrl"
+                <!-- NDA Badge when codeUrl is not provided and no caseStudy -->
+                @if (!project.codeUrl && !project.caseStudy) {
+                <div
                   class="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-900/60 text-slate-400 border border-slate-800 text-xs font-medium px-3 py-2.5 rounded-xl cursor-default">
                   <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -563,6 +577,7 @@
                   </svg>
                   <span>Private NDA</span>
                 </div>
+                }
               </div>
 
             </div>
@@ -889,5 +904,340 @@
 
     </div>
   </section>
+
+  <!-- ==================== INTERACTIVE FULL-STACK CASE STUDY MODAL ==================== -->
+  @if (activeCaseStudyProject && activeCaseStudyProject.caseStudy) {
+  <div
+    class="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-in fade-in duration-200"
+    (click)="closeCaseStudy()"
+  >
+    <div
+      class="relative w-full max-w-4xl bg-[#0b0f1a] border border-white/15 rounded-3xl shadow-2xl overflow-hidden my-auto flex flex-col max-h-[92vh]"
+      (click)="$event.stopPropagation()"
+    >
+      <!-- Modal Top Header -->
+      <div class="sticky top-0 z-20 px-6 sm:px-8 py-5 bg-[#0b0f1a]/95 backdrop-blur-md border-b border-white/10 flex items-center justify-between gap-4">
+        <div class="flex flex-col gap-1">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-500/30">
+              {{ activeCaseStudyProject.category }}
+            </span>
+            <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
+              {{ activeCaseStudyProject.roleBadge }}
+            </span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+            {{ activeCaseStudyProject.title }}
+          </h3>
+        </div>
+
+        <button
+          type="button"
+          (click)="closeCaseStudy()"
+          class="w-10 h-10 rounded-2xl bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-slate-300 hover:text-white flex items-center justify-center transition-all cursor-pointer shrink-0"
+          aria-label="Close modal"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Scrollable Content Body -->
+      <div class="overflow-y-auto p-6 sm:p-8 flex flex-col gap-8 custom-scrollbar">
+
+        <!-- 1. Featured UI Mockup Screen (Browser Container) -->
+        <div class="flex flex-col gap-3">
+          <div class="rounded-2xl overflow-hidden border border-white/15 bg-slate-950 shadow-2xl">
+            <!-- Browser Header Bar -->
+            <div class="px-4 py-3 bg-slate-900/90 border-b border-white/10 flex items-center gap-3">
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+              </div>
+              <div class="flex-1 max-w-sm mx-auto px-3 py-1 rounded-lg bg-slate-950/80 border border-white/10 text-[11px] text-slate-400 font-mono text-center truncate">
+                https://multivendor-marketplace.laravel/storefront
+              </div>
+            </div>
+            <!-- Image Screen -->
+            <div class="relative w-full aspect-video sm:aspect-[16/9] bg-slate-950 overflow-hidden">
+              <img
+                [src]="activeCaseStudyProject.image"
+                [alt]="activeCaseStudyProject.imageAlt"
+                class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+          </div>
+          <p class="text-slate-400 text-xs text-center flex items-center justify-center gap-2">
+            <span>🖼️ Primary Storefront UI with Hero & "Create Your Store" Multi-Vendor Launchpad</span>
+          </p>
+        </div>
+
+        <!-- 2. System Overview -->
+        <div class="glass-card rounded-2xl p-6 border border-white/10 flex flex-col gap-3">
+          <h4 class="text-white font-bold text-base sm:text-lg flex items-center gap-2">
+            <span class="text-blue-400">📋</span>
+            <span>Project Overview & Architecture Scope</span>
+          </h4>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            {{ activeCaseStudyProject.caseStudy.overview }}
+          </p>
+          <div class="flex flex-wrap gap-2 pt-2 border-t border-white/10">
+            @for (hl of activeCaseStudyProject.caseStudy.highlights; track hl) {
+            <span class="px-3 py-1 rounded-lg bg-blue-500/10 text-blue-300 text-xs font-semibold border border-blue-500/20 flex items-center gap-1.5">
+              <span>✓</span>
+              <span>{{ hl }}</span>
+            </span>
+            }
+          </div>
+        </div>
+
+        <!-- 3. Real UI Screen Gallery Breakdown -->
+        @if (activeCaseStudyProject.caseStudy.gallery && activeCaseStudyProject.caseStudy.gallery.length > 0) {
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-1">
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Detailed Application Views</span>
+            <h4 class="text-lg sm:text-xl font-bold text-white">Full-Stack Application Gallery & Screens</h4>
+            <p class="text-slate-400 text-xs sm:text-sm">Click any screen to view in full-screen zoom preview.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            @for (item of activeCaseStudyProject.caseStudy.gallery; track item.title) {
+            <div class="glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col group hover:border-blue-500/40 transition-all">
+              <!-- Screenshot Frame -->
+              <div
+                class="relative aspect-[16/10] bg-slate-950 overflow-hidden border-b border-white/10 cursor-pointer"
+                (click)="openImagePreview(item.image, item.title, item.description)"
+              >
+                <img
+                  [src]="item.image"
+                  [alt]="item.imageAlt"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                  <span class="px-3 py-1.5 rounded-xl bg-slate-900/90 text-white text-xs font-semibold border border-white/20 shadow-xl flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                    </svg>
+                    <span>Click to Zoom</span>
+                  </span>
+                </div>
+
+                <div class="absolute top-2.5 left-2.5">
+                  <span class="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wide bg-slate-900/90 text-blue-300 border border-white/15 shadow-md">
+                    {{ item.badge }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card Content -->
+              <div class="p-4 flex flex-col gap-1.5">
+                <h5 class="text-white font-bold text-sm group-hover:text-blue-400 transition-colors">
+                  {{ item.title }}
+                </h5>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                  {{ item.description }}
+                </p>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+        }
+
+        <!-- 4. Multi-Vendor End-to-End Workflow Steps -->
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-1">
+            <span class="text-xs font-bold uppercase tracking-widest text-indigo-400">Process & Execution</span>
+            <h4 class="text-lg sm:text-xl font-bold text-white">Full-Stack Multi-Vendor Lifecycle</h4>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div class="glass-card rounded-2xl p-4 sm:p-5 border border-white/10 flex gap-3.5 items-start">
+              <div class="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 font-extrabold flex items-center justify-center shrink-0 text-sm">
+                1
+              </div>
+              <div class="flex flex-col gap-1">
+                <h5 class="text-white font-bold text-sm">Storefront Discovery</h5>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                  Customers browse modern store templates, multi-category galleries (Skincare, Apparel, Accessories), and dynamic product lists.
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-4 sm:p-5 border border-white/10 flex gap-3.5 items-start">
+              <div class="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-400 font-extrabold flex items-center justify-center shrink-0 text-sm">
+                2
+              </div>
+              <div class="flex flex-col gap-1">
+                <h5 class="text-white font-bold text-sm">Vendor Onboarding Application</h5>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                  Sellers click <strong>"Create Your Store"</strong> in the hero and submit a multi-step questionnaire (customer location, photos readiness, delivery).
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-4 sm:p-5 border border-white/10 flex gap-3.5 items-start">
+              <div class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 font-extrabold flex items-center justify-center shrink-0 text-sm">
+                3
+              </div>
+              <div class="flex flex-col gap-1">
+                <h5 class="text-white font-bold text-sm">Admin Verification & Gating</h5>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                  Submitted vendor profiles enter a secure review table. Stores remain pending until platform administrators verify and approve them.
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-4 sm:p-5 border border-white/10 flex gap-3.5 items-start">
+              <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 font-extrabold flex items-center justify-center shrink-0 text-sm">
+                4
+              </div>
+              <div class="flex flex-col gap-1">
+                <h5 class="text-white font-bold text-sm">Shopping Bag & Express Checkout</h5>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                  Shoppers add items to bag with real-time cart recalculation and pay via <strong>ABA Pay, Bakong / KHQR</strong>, or card.
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-card sm:col-span-2 rounded-2xl p-4 sm:p-5 border border-white/10 flex gap-3.5 items-start">
+              <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 font-extrabold flex items-center justify-center shrink-0 text-sm">
+                5
+              </div>
+              <div class="flex flex-col gap-1">
+                <h5 class="text-white font-bold text-sm">Customer Orders Ledger & Tracking</h5>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                  Transactions write directly to MySQL with transactional safety; customers view order history (quantities, dates, vendor breakdown, totals).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Key Architectural Capabilities Grid -->
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-1">
+            <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Technical Features</span>
+            <h4 class="text-lg sm:text-xl font-bold text-white">Full-Stack Features Breakdown</h4>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            @for (feat of activeCaseStudyProject.caseStudy.keyFeatures; track feat.title) {
+            <div class="glass-card rounded-2xl p-5 border border-white/10 flex flex-col gap-2 hover:border-blue-500/30 transition-colors">
+              <h5 class="text-white font-bold text-sm sm:text-base flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                <span>{{ feat.title }}</span>
+              </h5>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                {{ feat.desc }}
+              </p>
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- 5. Relational Database (MySQL) Architecture Breakdown -->
+        <div class="glass-card rounded-2xl p-6 border border-white/10 flex flex-col gap-4 bg-slate-950/60">
+          <h4 class="text-white font-bold text-base sm:text-lg flex items-center gap-2">
+            <span class="text-cyan-400">🗄️</span>
+            <span>MySQL Relational Database Design & Entities</span>
+          </h4>
+          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+            Schema normalized for ACID transactional compliance, multi-vendor isolation, and relational integrity across Laravel models:
+          </p>
+
+          <div class="grid grid-cols-1 gap-2.5">
+            @for (schema of activeCaseStudyProject.caseStudy.databaseSchema; track schema) {
+            <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-start gap-3">
+              <span class="font-mono text-xs font-bold text-cyan-300 px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 shrink-0">
+                SQL
+              </span>
+              <span class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                {{ schema }}
+              </span>
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- Tech Stack Tags -->
+        <div class="flex flex-col gap-2 pt-2 border-t border-white/10">
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Technology Stack</span>
+          <div class="flex flex-wrap gap-2">
+            @for (tag of activeCaseStudyProject.tags; track tag) {
+            <span class="px-3 py-1 rounded-xl bg-white/[0.05] border border-white/10 text-slate-200 text-xs font-medium">
+              {{ tag }}
+            </span>
+            }
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Bottom Actions -->
+      <div class="sticky bottom-0 z-20 px-6 sm:px-8 py-4 bg-[#0b0f1a]/95 backdrop-blur-md border-t border-white/10 flex items-center justify-between gap-4">
+        <button
+          type="button"
+          (click)="closeCaseStudy()"
+          class="px-5 py-2.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 hover:text-white text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+        >
+          Close Specs
+        </button>
+
+        <a
+          href="https://t.me/HasBunRoeun"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs sm:text-sm font-bold px-6 py-2.5 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all no-underline"
+        >
+          <span>Discuss on Telegram</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  }
+
+  <!-- ==================== FULLSCREEN SCREENSHOT LIGHTBOX MODAL ==================== -->
+  @if (activeExpandedImage) {
+  <div
+    class="fixed inset-0 z-[60] bg-black/90 backdrop-blur-2xl flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-150"
+    (click)="closeImagePreview()"
+  >
+    <div
+      class="relative max-w-5xl w-full bg-[#0b0f1a] border border-white/20 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="px-6 py-4 bg-[#0b0f1a]/95 border-b border-white/10 flex items-center justify-between gap-4">
+        <div>
+          <h4 class="text-white font-bold text-base sm:text-lg">{{ activeExpandedImage.title }}</h4>
+          <p class="text-slate-400 text-xs">{{ activeExpandedImage.desc }}</p>
+        </div>
+        <button
+          type="button"
+          (click)="closeImagePreview()"
+          class="w-9 h-9 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] text-white flex items-center justify-center cursor-pointer transition-all"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-3 sm:p-5 bg-slate-950 overflow-auto flex items-center justify-center max-h-[78vh]">
+        <img
+          [src]="activeExpandedImage.image"
+          [alt]="activeExpandedImage.title"
+          class="max-w-full max-h-[74vh] object-contain rounded-xl shadow-2xl border border-white/10"
+        />
+      </div>
+    </div>
+  </div>
+  }
 
 </div>

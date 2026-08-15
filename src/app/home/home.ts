@@ -10,17 +10,42 @@ export interface SkillCategory {
   skills: string[];
 }
 
+export interface ProjectFeature {
+  title: string;
+  desc: string;
+  icon?: string;
+}
+
+export interface CaseStudyGalleryItem {
+  title: string;
+  badge: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+}
+
+export interface ProjectCaseStudy {
+  overview: string;
+  architecture: string[];
+  gallery?: CaseStudyGalleryItem[];
+  keyFeatures: ProjectFeature[];
+  workflow: string[];
+  databaseSchema: string[];
+  highlights: string[];
+}
+
 export interface Project {
   title: string;
   description: string;
   image: string;
   imageAlt: string;
-  type: 'fullstack' | 'frontend' | 'lab';
+  type: 'fullstack' | 'frontend';
   category: string;
   roleBadge: string;
   tags: string[];
   demoUrl?: string;
   codeUrl?: string;
+  caseStudy?: ProjectCaseStudy;
 }
 
 export interface TargetRole {
@@ -49,8 +74,29 @@ export interface ServiceOption {
 export class Home {
   selectedProjectFilter: 'all' | 'fullstack' | 'frontend' = 'all';
   isDropdownOpen = false;
+  activeCaseStudyProject: Project | null = null;
+  activeExpandedImage: { image: string; title: string; desc: string } | null = null;
 
   constructor(private readonly elementRef: ElementRef) {}
+
+  openCaseStudy(project: Project) {
+    this.activeCaseStudyProject = project;
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeCaseStudy() {
+    this.activeCaseStudyProject = null;
+    this.activeExpandedImage = null;
+    document.body.style.overflow = '';
+  }
+
+  openImagePreview(image: string, title: string, desc: string) {
+    this.activeExpandedImage = { image, title, desc };
+  }
+
+  closeImagePreview() {
+    this.activeExpandedImage = null;
+  }
 
   readonly targetRoles: TargetRole[] = [
     {
@@ -269,6 +315,109 @@ Sent from Bunroeun's Portfolio`;
   ];
 
   readonly projects: Project[] = [
+    {
+      title: 'Laravel Multi-Vendor E-Commerce',
+      description: 'Full-stack multi-vendor marketplace featuring dynamic storefront templates, vendor onboarding with admin approval workflows, express checkout (ABA / Bakong), and relational MySQL database architecture.',
+      image: 'projects/laravel_ecommerce.png',
+      imageAlt: 'Laravel Multi-Vendor E-Commerce Storefront preview',
+      type: 'fullstack',
+      category: 'Full-Stack & Multi-Vendor',
+      roleBadge: 'Full-Stack Lead (Laravel + MySQL Backend)',
+      tags: ['Laravel', 'MySQL', 'PHP', 'Blade', 'Custom CSS', 'Multi-Vendor', 'Express Checkout'],
+      caseStudy: {
+        overview: 'A complete full-stack multi-vendor e-commerce platform built with Laravel and MySQL. It empowers customers to browse multi-category storefronts, place express orders with automated cart calculations, and offers a multi-step vendor application and admin verification lifecycle.',
+        architecture: [
+          'Laravel MVC Architecture & RESTful Resource Routing',
+          'MySQL Relational Database Design with Foreign Key Integrity',
+          'Blade Templating Engine styled with Custom Responsive CSS3',
+          'Role-Based Authorization (Admin, Vendor, Customer)',
+          'Express Payment & Order Processing Integration'
+        ],
+        gallery: [
+          {
+            title: 'Website Templates Showcase',
+            badge: 'Storefront Themes',
+            description: 'Curated e-commerce template layouts for diverse vendor niches including apparel, fashion, and beauty salon themes.',
+            image: 'detail_ecommerce/templates.png',
+            imageAlt: 'Website Templates Showcase'
+          },
+          {
+            title: 'Multi-Category Product Catalog',
+            badge: 'Catalog & Filters',
+            description: 'Dynamic category navigation across Skincare, Clothing, Accessories, and Education with real-time pricing and interactive cards.',
+            image: 'detail_ecommerce/catalog.png',
+            imageAlt: 'Multi-Category Product Catalog'
+          },
+          {
+            title: 'Product Details & Variant Selector',
+            badge: 'Product Engine',
+            description: 'Specification interface with dynamic size dropdown, live price computation, quantity limits (max 10), and related products suggestions.',
+            image: 'detail_ecommerce/product_detail.png',
+            imageAlt: 'Product Details and Cart Action'
+          },
+          {
+            title: 'Express Checkout & Payment Methods',
+            badge: 'Payment Gateway',
+            description: 'Streamlined checkout with contact & delivery forms, cart summary itemization ($25.00 total), and ACLEDA & ABA Pay integrations.',
+            image: 'detail_ecommerce/checkout.png',
+            imageAlt: 'Express Checkout with ABA and ACLEDA'
+          },
+          {
+            title: 'Multi-Channel Support & Platform Hub',
+            badge: 'Support & Help Center',
+            description: 'Multi-channel customer contact center (Call, Email, Live Chat 7AM-9PM) with regional location routing in Phnom Penh, Cambodia.',
+            image: 'detail_ecommerce/contact_support.png',
+            imageAlt: 'Support and Platform Footer Hub'
+          }
+        ],
+        keyFeatures: [
+          {
+            title: 'Multi-Vendor Storefront & Hero',
+            desc: 'Modern responsive landing page featuring storefront templates showcase and a direct "Create Your Store" call-to-action.'
+          },
+          {
+            title: 'Vendor Onboarding & Questionnaire',
+            desc: 'Multi-step onboarding form collecting store criteria, vendor location, product readiness, and delivery logistics.'
+          },
+          {
+            title: 'Admin Verification & Approval Pipeline',
+            desc: 'Security gateway where administrators review vendor applications and approve stores before products go live.'
+          },
+          {
+            title: 'Product Catalog & Dynamic Variations',
+            desc: 'Categorized catalog (Skincare, Apparel, Accessories) with size selection, live pricing calculation, and stock control.'
+          },
+          {
+            title: 'Shopping Bag & Express Checkout',
+            desc: 'Interactive shopping cart modal with express checkout options (ABA Pay, Bakong / KHQR, and Card).'
+          },
+          {
+            title: 'Customer Order History & Tracking',
+            desc: 'Customer dashboard tracking past purchases, item quantities, order dates, delivery addresses, and status.'
+          }
+        ],
+        workflow: [
+          '1. Storefront Discovery: Customers browse template themes, categories, and featured skincare / apparel products.',
+          '2. Vendor Application: Users click "Create Your Store" in the hero and submit store details through the onboarding flow.',
+          '3. Admin Review: Platform admins evaluate vendor submissions and approve legitimate seller accounts.',
+          '4. Bag & Express Checkout: Shoppers add items to bag and proceed through Express Checkout with ABA / Bakong payment.',
+          '5. Order Storage & Tracking: Transactions are securely written to MySQL and updated in customer Order History.'
+        ],
+        databaseSchema: [
+          'users — Authentication credentials, customer profiles, and role management (Admin, Vendor, Customer)',
+          'vendors & stores — Store profile info, verification status (Pending, Approved, Rejected), and business details',
+          'categories & products — Product catalog, categories, pricing, size options, stock levels, and media',
+          'orders & order_items — Relational transactional ledger linking buyers, purchased items, quantities, and pricing',
+          'payments — Transaction records, express payment provider logs (ABA / Bakong), and receipt verification'
+        ],
+        highlights: [
+          'End-to-end full-stack development with Laravel & MySQL',
+          'Custom multi-vendor onboarding with approval gating',
+          'Express checkout with modern digital payments (ABA / Bakong)',
+          'Mobile-first responsive UI crafted with Custom CSS3'
+        ]
+      }
+    },
     {
       title: 'SKIN.ME AI Ecommerce',
       description: 'Full-stack skincare ecommerce and personalized recommendation web application featuring an integrated AI skincare chatbot assistant.',
