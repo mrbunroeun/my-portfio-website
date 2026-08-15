@@ -488,7 +488,7 @@
       <!-- Filtered Project Cards Grid (3 Columns on Desktop) -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         <div *ngFor="let project of filteredProjects"
-          [ngClass]="activeCodeDropdownTitle === project.title ? 'z-50' : 'z-10'"
+          [style.z-index]="activeCodeDropdownTitle === project.title ? 60 : 1"
           class="glass-card glass-card-hover rounded-2xl border border-white/[0.08] flex flex-col group relative transition-all">
 
           <!-- Image Showcase -->
@@ -577,10 +577,11 @@
                     </svg>
                   </button>
 
-                  <!-- Dropdown Popover Menu (opens upward over the card with high z-index) -->
+                  <!-- Dropdown Popover Menu (Drops to bottom by default; flips to top if near viewport bottom) -->
                   @if (activeCodeDropdownTitle === project.title) {
                   <div
-                    class="absolute bottom-full mb-2.5 right-0 left-0 sm:left-auto sm:w-64 p-2 rounded-2xl bg-[#0b1120] border border-blue-500/30 shadow-2xl backdrop-blur-2xl z-50 flex flex-col gap-1.5 animate-in fade-in slide-in-from-bottom-2 duration-150"
+                    class="absolute right-0 left-0 sm:left-auto sm:w-64 p-2 rounded-2xl bg-[#0b1120] border border-blue-500/40 shadow-2xl backdrop-blur-2xl z-[100] flex flex-col gap-1.5 animate-in fade-in duration-150"
+                    [ngClass]="isCodeDropdownDropUp ? 'bottom-full mb-2 slide-in-from-bottom-2' : 'top-full mt-2 slide-in-from-top-2'"
                   >
                     <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 border-b border-white/10 flex items-center justify-between">
                       <span>Source Repositories</span>
