@@ -152,7 +152,7 @@
   <!-- ==================== TARGET ROLES & SPECIALIZATION MATRIX ==================== -->
   <section class="relative py-12 px-6 sm:px-10 overflow-hidden border-t border-white/[0.06] bg-slate-950/60">
     <div class="max-w-7xl mx-auto flex flex-col gap-8">
-      
+
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div class="flex flex-col gap-1">
           <span class="text-xs font-bold tracking-widest uppercase text-blue-400">Position Specializations</span>
@@ -165,31 +165,34 @@
 
       <!-- 3 Distinct Role Cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div
-          *ngFor="let role of targetRoles"
-          class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between gap-6 border border-white/[0.08] relative group"
-        >
+        <div *ngFor="let role of targetRoles"
+          class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between gap-6 border border-white/[0.08] relative group">
           <div class="flex flex-col gap-4">
             <!-- Header with Level Badge -->
             <div class="flex items-center justify-between">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-tr {{ role.color }} flex items-center justify-center text-white shadow-lg">
+              <div
+                class="w-11 h-11 rounded-xl bg-gradient-to-tr {{ role.color }} flex items-center justify-center text-white shadow-lg">
                 @if (role.icon === 'stack') {
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-                  </svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
                 } @else if (role.icon === 'code') {
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                  </svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
                 } @else {
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4 4 4 0 014-4c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2zM15 3a4 4 0 014 4 4 4 0 01-4 4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2zM9 13l6-6"/>
-                  </svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 21a4 4 0 01-4-4 4 4 0 014-4c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2zM15 3a4 4 0 014 4 4 4 0 01-4 4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2zM9 13l6-6" />
+                </svg>
                 }
               </div>
 
               <!-- Specialization Tag -->
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-300 border border-blue-500/25">
+              <span
+                class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-300 border border-blue-500/25">
                 {{ role.level }}
               </span>
             </div>
@@ -203,10 +206,8 @@
 
           <!-- Highlight list -->
           <div class="flex flex-wrap gap-1.5 pt-3 border-t border-white/[0.08]">
-            <span
-              *ngFor="let item of role.highlights"
-              class="px-2.5 py-1 rounded-lg bg-white/[0.04] text-slate-300 text-xs font-medium border border-white/[0.06]"
-            >
+            <span *ngFor="let item of role.highlights"
+              class="px-2.5 py-1 rounded-lg bg-white/[0.04] text-slate-300 text-xs font-medium border border-white/[0.06]">
               {{ item }}
             </span>
           </div>
@@ -253,20 +254,27 @@
             </p>
 
             <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
-              I develop complete, reliable web architectures — handling both complex frontend SPAs (Angular 21, React, Tailwind) and robust backend APIs & databases (Laravel, Next.js, MySQL). Backed by foundations in <span class="text-indigo-400 font-medium">User Psychology</span>, I design interfaces that are conversion-focused and human-friendly.
+              I develop complete, reliable web architectures — handling both complex frontend SPAs (Angular 21, React,
+              Tailwind) and robust backend APIs & databases (Laravel, Next.js, MySQL). Backed by foundations in <span
+                class="text-indigo-400 font-medium">User Psychology</span>, I design interfaces that are
+              conversion-focused and human-friendly.
             </p>
           </div>
 
           <!-- Highlight Keywords -->
           <div class="flex flex-wrap gap-2 pt-2 border-t border-white/[0.08]">
             <span
-              class="px-3 py-1 rounded-lg bg-blue-500/10 text-blue-300 text-xs font-semibold border border-blue-500/20">Full-Stack Architecture</span>
+              class="px-3 py-1 rounded-lg bg-blue-500/10 text-blue-300 text-xs font-semibold border border-blue-500/20">Full-Stack
+              Architecture</span>
             <span
-              class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-300 text-xs font-semibold border border-cyan-500/20">Frontend Engineering</span>
+              class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-300 text-xs font-semibold border border-cyan-500/20">Frontend
+              Engineering</span>
             <span
-              class="px-3 py-1 rounded-lg bg-purple-500/10 text-purple-300 text-xs font-semibold border border-purple-500/20">UX/UI Psychology</span>
+              class="px-3 py-1 rounded-lg bg-purple-500/10 text-purple-300 text-xs font-semibold border border-purple-500/20">UX/UI
+              Psychology</span>
             <span
-              class="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-300 text-xs font-semibold border border-emerald-500/20">API Integration</span>
+              class="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-300 text-xs font-semibold border border-emerald-500/20">API
+              Integration</span>
           </div>
         </div>
 
@@ -426,46 +434,29 @@
               class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Projects</span>
           </h2>
           <p class="text-slate-400 text-base max-w-xl">
-            Filtered by technical role: Full-Stack applications, Frontend SPAs, and Interactive Labs.
+            Filtered by technical role: Full-Stack applications and Frontend SPAs.
           </p>
         </div>
 
         <!-- Interactive Category Filter Tabs -->
-        <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-slate-900/90 border border-white/[0.08] backdrop-blur-md self-start md:self-auto">
-          <button
-            type="button"
-            (click)="setProjectFilter('all')"
+        <div
+          class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-slate-900/90 border border-white/[0.08] backdrop-blur-md self-start md:self-auto">
+          <button type="button" (click)="setProjectFilter('all')"
             [ngClass]="selectedProjectFilter === 'all' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer"
-          >
-            All ({{ projects.length + additionalProjects.length }})
+            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer">
+            All ({{ projects.length }})
           </button>
-          
-          <button
-            type="button"
-            (click)="setProjectFilter('fullstack')"
+
+          <button type="button" (click)="setProjectFilter('fullstack')"
             [ngClass]="selectedProjectFilter === 'fullstack' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer"
-          >
+            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer">
             Full-Stack ({{ fullStackProjects.length }})
           </button>
 
-          <button
-            type="button"
-            (click)="setProjectFilter('frontend')"
+          <button type="button" (click)="setProjectFilter('frontend')"
             [ngClass]="selectedProjectFilter === 'frontend' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer"
-          >
+            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer">
             Frontend ({{ frontendProjects.length }})
-          </button>
-
-          <button
-            type="button"
-            (click)="setProjectFilter('lab')"
-            [ngClass]="selectedProjectFilter === 'lab' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer"
-          >
-            Labs
           </button>
         </div>
       </div>
@@ -498,7 +489,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         <div *ngFor="let project of filteredProjects"
           class="glass-card glass-card-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col group">
-          
+
           <!-- Image Showcase -->
           <div class="relative w-full aspect-video bg-slate-950 overflow-hidden border-b border-white/[0.08]">
             <img [src]="project.image" [alt]="project.imageAlt"
@@ -604,7 +595,8 @@
             class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Extraordinary</span>
         </h2>
         <p class="text-slate-300 text-base sm:text-lg">
-          Have a project in mind or looking for a skilled Full-Stack / Frontend Developer & UX/UI Designer? Send me a message directly to my Telegram!
+          Have a project in mind or looking for a skilled Full-Stack / Frontend Developer & UX/UI Designer? Send me a
+          message directly to my Telegram!
         </p>
       </div>
 
@@ -740,43 +732,46 @@
 
             <!-- Custom Interactive Glassmorphism Dropdown -->
             <div class="flex flex-col gap-2 relative" id="custom-dropdown-container">
-              <label class="text-slate-300 text-xs font-semibold tracking-wide uppercase flex items-center justify-between">
+              <label
+                class="text-slate-300 text-xs font-semibold tracking-wide uppercase flex items-center justify-between">
                 <span>Project / Role Type</span>
                 <span class="text-blue-400 text-[11px] font-medium lowercase">select one</span>
               </label>
 
               <!-- Trigger Button -->
-              <button
-                type="button"
-                (click)="toggleDropdown()"
+              <button type="button" (click)="toggleDropdown()"
                 class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-blue-500/50 focus:border-blue-500 text-left text-white text-sm outline-none transition-all flex items-center justify-between group cursor-pointer shadow-inner"
-                [class.border-blue-500]="isDropdownOpen"
-                [class.ring-1]="isDropdownOpen"
-                [class.ring-blue-500]="isDropdownOpen"
-              >
+                [class.border-blue-500]="isDropdownOpen" [class.ring-1]="isDropdownOpen"
+                [class.ring-blue-500]="isDropdownOpen">
                 <div class="flex items-center gap-3">
                   <!-- Active Option Icon -->
-                  <div class="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                  <div
+                    class="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400">
                     @if (selectedServiceOption.icon === 'stack') {
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-                      </svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
                     } @else if (selectedServiceOption.icon === 'code') {
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                      </svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
                     } @else if (selectedServiceOption.icon === 'design') {
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4 4 4 0 014-4c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2zM15 3a4 4 0 014 4 4 4 0 01-4 4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2zM9 13l6-6"/>
-                      </svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 21a4 4 0 01-4-4 4 4 0 014-4c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2zM15 3a4 4 0 014 4 4 4 0 01-4 4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2zM9 13l6-6" />
+                    </svg>
                     } @else if (selectedServiceOption.icon === 'sparkles') {
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                      </svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
                     } @else {
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                      </svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
                     }
                   </div>
 
@@ -788,76 +783,75 @@
 
                 <!-- Chevron Animated Arrow -->
                 <div class="flex items-center gap-2">
-                  <span class="hidden sm:inline-block text-[11px] font-semibold px-2 py-0.5 rounded-md bg-white/[0.06] text-blue-300 border border-white/10">
+                  <span
+                    class="hidden sm:inline-block text-[11px] font-semibold px-2 py-0.5 rounded-md bg-white/[0.06] text-blue-300 border border-white/10">
                     {{ selectedServiceOption.badge }}
                   </span>
-                  <svg
-                    class="w-4 h-4 text-slate-400 group-hover:text-white transition-transform duration-200"
-                    [class.rotate-180]="isDropdownOpen"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                  <svg class="w-4 h-4 text-slate-400 group-hover:text-white transition-transform duration-200"
+                    [class.rotate-180]="isDropdownOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
               </button>
 
               <!-- Floating Custom Dropdown Menu -->
               @if (isDropdownOpen) {
-                <div class="absolute top-[100%] left-0 right-0 mt-2 p-2 rounded-2xl bg-slate-900/95 border border-white/15 shadow-2xl backdrop-blur-2xl z-50 flex flex-col gap-1.5 animate-in fade-in slide-in-from-top-2 duration-200">
-                  @for (option of serviceOptions; track option.value) {
-                    <button
-                      type="button"
-                      (click)="selectService(option.value)"
-                      class="w-full p-2.5 rounded-xl text-left flex items-center justify-between transition-all cursor-pointer group"
-                      [ngClass]="formData.service === option.value ? 'bg-blue-600/20 border border-blue-500/40 text-white' : 'hover:bg-white/[0.06] text-slate-300 hover:text-white border border-transparent'"
-                    >
-                      <div class="flex items-center gap-3">
-                        <div
-                          class="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
-                          [ngClass]="formData.service === option.value ? 'bg-blue-500 text-white shadow-md' : 'bg-white/[0.05] text-slate-400 group-hover:text-blue-400 group-hover:bg-blue-500/10'"
-                        >
-                          @if (option.icon === 'stack') {
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-                            </svg>
-                          } @else if (option.icon === 'code') {
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                            </svg>
-                          } @else if (option.icon === 'design') {
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4 4 4 0 014-4c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2zM15 3a4 4 0 014 4 4 4 0 01-4 4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2zM9 13l6-6"/>
-                            </svg>
-                          } @else if (option.icon === 'sparkles') {
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                            </svg>
-                          } @else {
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                            </svg>
-                          }
-                        </div>
-
-                        <div class="flex flex-col">
-                          <span class="font-semibold text-sm" [class.text-white]="formData.service === option.value">{{ option.label }}</span>
-                          <span class="text-slate-400 text-xs">{{ option.description }}</span>
-                        </div>
-                      </div>
-
-                      <!-- Checkmark Icon for Selected -->
-                      @if (formData.service === option.value) {
-                        <div class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
-                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-                          </svg>
-                        </div>
+              <div
+                class="absolute top-[100%] left-0 right-0 mt-2 p-2 rounded-2xl bg-slate-900/95 border border-white/15 shadow-2xl backdrop-blur-2xl z-50 flex flex-col gap-1.5 animate-in fade-in slide-in-from-top-2 duration-200">
+                @for (option of serviceOptions; track option.value) {
+                <button type="button" (click)="selectService(option.value)"
+                  class="w-full p-2.5 rounded-xl text-left flex items-center justify-between transition-all cursor-pointer group"
+                  [ngClass]="formData.service === option.value ? 'bg-blue-600/20 border border-blue-500/40 text-white' : 'hover:bg-white/[0.06] text-slate-300 hover:text-white border border-transparent'">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
+                      [ngClass]="formData.service === option.value ? 'bg-blue-500 text-white shadow-md' : 'bg-white/[0.05] text-slate-400 group-hover:text-blue-400 group-hover:bg-blue-500/10'">
+                      @if (option.icon === 'stack') {
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                      </svg>
+                      } @else if (option.icon === 'code') {
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                      </svg>
+                      } @else if (option.icon === 'design') {
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M7 21a4 4 0 01-4-4 4 4 0 014-4c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2zM15 3a4 4 0 014 4 4 4 0 01-4 4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2zM9 13l6-6" />
+                      </svg>
+                      } @else if (option.icon === 'sparkles') {
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                      </svg>
+                      } @else {
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
                       }
-                    </button>
+                    </div>
+
+                    <div class="flex flex-col">
+                      <span class="font-semibold text-sm" [class.text-white]="formData.service === option.value">{{
+                        option.label }}</span>
+                      <span class="text-slate-400 text-xs">{{ option.description }}</span>
+                    </div>
+                  </div>
+
+                  <!-- Checkmark Icon for Selected -->
+                  @if (formData.service === option.value) {
+                  <div
+                    class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
                   }
-                </div>
+                </button>
+                }
+              </div>
               }
             </div>
 

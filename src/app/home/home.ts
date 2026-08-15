@@ -47,7 +47,7 @@ export interface ServiceOption {
   styleUrl: './home.css',
 })
 export class Home {
-  selectedProjectFilter: 'all' | 'fullstack' | 'frontend' | 'lab' = 'all';
+  selectedProjectFilter: 'all' | 'fullstack' | 'frontend' = 'all';
   isDropdownOpen = false;
 
   constructor(private readonly elementRef: ElementRef) {}
@@ -150,14 +150,13 @@ export class Home {
     }
   }
 
-  setProjectFilter(filter: 'all' | 'fullstack' | 'frontend' | 'lab') {
+  setProjectFilter(filter: 'all' | 'fullstack' | 'frontend') {
     this.selectedProjectFilter = filter;
   }
 
   get filteredProjects(): Project[] {
-    const all = [...this.projects, ...this.additionalProjects];
-    if (this.selectedProjectFilter === 'all') return all;
-    return all.filter((p) => p.type === this.selectedProjectFilter);
+    if (this.selectedProjectFilter === 'all') return this.projects;
+    return this.projects.filter((p) => p.type === this.selectedProjectFilter);
   }
 
   get fullStackProjects(): Project[] {
@@ -271,97 +270,83 @@ Sent from Bunroeun's Portfolio`;
 
   readonly projects: Project[] = [
     {
-      title: 'SKIN.ME',
-      description: 'Full-stack skincare ecommerce and personalized recommendation web application featuring an integrated AI skincare chatbot.',
+      title: 'SKIN.ME AI Ecommerce',
+      description: 'Full-stack skincare ecommerce and personalized recommendation web application featuring an integrated AI skincare chatbot assistant.',
       image: 'projects/SKINME.png',
       imageAlt: 'SKIN.ME project preview',
       type: 'fullstack',
       category: 'Full-Stack & AI',
       roleBadge: 'Full-Stack Lead (Next.js + MySQL + Gemini)',
       tags: ['Next.js', 'MySQL', 'TypeScript', 'Tailwind CSS', 'Gemini AI'],
-      demoUrl: 'https://skinme-demo.example.com',
-      codeUrl: 'https://github.com/you/skinme',
-    },
-    {
-      title: 'Envy Stage',
-      description: 'Commercial web platform for stage effects and atmosphere solutions. Directed 100% frontend development and collaborated on 20% backend logic.',
-      image: 'projects/envy_stage.png',
-      imageAlt: 'Envy Stage project preview',
-      type: 'fullstack',
-      category: 'Commercial Web',
-      roleBadge: 'Frontend Lead & Backend Support (100% FE / 20% BE)',
-      tags: ['Laravel', 'Blade', 'Tailwind CSS', 'MySQL', 'JavaScript', 'PHP'],
-      demoUrl: 'https://testimonial-card-demo.example.com',
-    },
-    {
-      title: 'Metro',
-      description: 'Corporate portal for stage and atmosphere products. Built 100% responsive frontend layouts and contributed ~40% backend database integration.',
-      image: 'projects/metro.png',
-      imageAlt: 'Metro project preview',
-      type: 'fullstack',
-      category: 'Commercial Web',
-      roleBadge: 'Full-Stack Contributor (100% FE / 40% BE)',
-      tags: ['Laravel', 'Blade', 'Tailwind CSS', 'MySQL', 'JavaScript', 'PHP'],
-      demoUrl: 'https://testimonial-card-demo.example.com',
-    },
-    {
-      title: 'SKK Agriculture',
-      description: 'Modern agricultural enterprise showcase platform featuring product galleries and dynamic inquiry systems.',
-      image: 'projects/skk_agriculture.png',
-      imageAlt: 'SKK Agriculture project preview',
-      type: 'fullstack',
-      category: 'Enterprise Platform',
-      roleBadge: 'Full-Stack Contributor (100% FE / 40% BE)',
-      tags: ['Laravel', 'Blade', 'Tailwind CSS', 'MySQL', 'JavaScript', 'PHP'],
-      demoUrl: 'https://testimonial-card-demo.example.com',
+      demoUrl: 'https://skinme.store/',
     },
     {
       title: 'LED Media',
-      description: 'High-impact multimedia showcase portal for LED screen and digital advertising solutions with interactive showcases.',
+      description: 'High-impact multimedia showcase portal for LED screen and digital advertising solutions. Built complete responsive frontend and implemented backend database adjustments.',
       image: 'projects/led_media.png',
       imageAlt: 'LED Media project preview',
-      type: 'frontend',
-      category: 'Frontend & Media',
-      roleBadge: 'Frontend Architect (100% Responsive UI)',
-      tags: ['Laravel', 'Blade', 'Tailwind CSS', 'MySQL', 'JavaScript', 'PHP'],
-      demoUrl: 'https://testimonial-card-demo.example.com',
+      type: 'fullstack',
+      category: 'Full-Stack & Media',
+      roleBadge: 'Full-Stack Contributor (Frontend + MySQL Backend)',
+      tags: ['Laravel', 'MySQL', 'PHP', 'Blade', 'Tailwind CSS', 'JavaScript'],
+      demoUrl: 'https://ledmedia.com.kh/',
     },
     {
-      title: 'Master MEP',
-      description: 'Mechanical, Electrical, and Plumbing engineering services portal designed for optimal clarity and fast mobile performance.',
+      title: 'Envy Stage',
+      description: 'Commercial web platform for stage effects and atmosphere solutions. Directed full frontend development with responsive layouts and collaborated on backend enhancements.',
+      image: 'projects/envy_stage.png',
+      imageAlt: 'Envy Stage project preview',
+      type: 'fullstack',
+      category: 'Full-Stack Commercial',
+      roleBadge: 'Frontend Lead & Backend Support',
+      tags: ['Laravel', 'MySQL', 'PHP', 'Blade', 'Tailwind CSS', 'JavaScript'],
+      demoUrl: 'https://envystage.com/',
+    },
+    {
+      title: 'BRWeb Catering',
+      description: 'Modern restaurant and mobile catering web platform built with Angular and TypeScript, featuring dynamic menu structures and responsive layouts modeled after the Metro portal architecture.',
+      image: 'additional_project/brweb.png',
+      imageAlt: 'BRWeb Catering project preview',
+      type: 'frontend',
+      category: 'Angular Web App',
+      roleBadge: 'Frontend Lead & UI Structure (Angular TS)',
+      tags: ['Angular', 'TypeScript', 'Tailwind CSS', 'Responsive UI', 'Vercel'],
+      demoUrl: 'https://angular-ts-psi.vercel.app/mobile-catering',
+    },
+    {
+      title: 'SKK Agriculture',
+      description: 'Modern agricultural enterprise showcase platform featuring product galleries, catalog navigation, and dynamic inquiry interfaces.',
+      image: 'projects/skk_agriculture.png',
+      imageAlt: 'SKK Agriculture project preview',
+      type: 'frontend',
+      category: 'Enterprise Showcase',
+      roleBadge: 'Frontend Developer (100% FE)',
+      tags: ['Frontend Development', 'JavaScript', 'Tailwind CSS', 'HTML5/CSS3', 'Responsive UI'],
+      demoUrl: 'https://www.skkagriculture.com/',
+    },
+    {
+      title: 'Metro',
+      description: 'Dynamic stage equipment and atmosphere solution corporate portal. Designed and built 100% responsive frontend layout and user interface.',
+      image: 'projects/metro.png',
+      imageAlt: 'Metro project preview',
+      type: 'frontend',
+      category: 'Commercial Portal',
+      roleBadge: 'Frontend Developer (100% FE)',
+      tags: ['Frontend Architecture', 'Blade', 'Tailwind CSS', 'JavaScript', 'Hostinger'],
+      demoUrl: 'https://darksalmon-chimpanzee-940996.hostingersite.com/',
+    },
+    {
+      title: 'Master MEP Solution',
+      description: 'Mechanical, Electrical, and Plumbing engineering services website. Executed a comprehensive UX redesign, responsive layout overhaul, and frontend performance optimizations.',
       image: 'projects/master_mep.png',
       imageAlt: 'Master MEP project preview',
       type: 'frontend',
-      category: 'Frontend Engineering',
-      roleBadge: 'Frontend Engineer (UI/UX + Optimization)',
-      tags: ['Laravel', 'Blade', 'Tailwind CSS', 'MySQL', 'JavaScript', 'PHP'],
-      demoUrl: 'https://testimonial-card-demo.example.com',
+      category: 'Engineering & UX Redesign',
+      roleBadge: 'UX/UI & Frontend Redesign (100% Overhaul)',
+      tags: ['UX/UI Redesign', 'Responsive Layout', 'Frontend Optimization', 'CSS/JS'],
+      demoUrl: 'https://mastermepsolution.com.kh/',
     },
   ];
 
-  readonly additionalProjects: Project[] = [
-    {
-      title: 'BRWeb Portfolio',
-      description: 'Personal portfolio platform built with Angular 21 standalone architecture, Signals, and modern Tailwind CSS design tokens.',
-      image: 'additional_project/brweb.png',
-      imageAlt: 'BRWeb portfolio preview',
-      type: 'frontend',
-      category: 'Frontend & UI/UX',
-      roleBadge: 'Frontend & UX/UI Designer',
-      tags: ['Angular 21', 'Tailwind CSS', 'TypeScript'],
-      demoUrl: 'https://yourportfolio.example.com',
-      codeUrl: 'https://github.com/you/portfolio',
-    },
-    {
-      title: 'Flappy Game Lab',
-      description: 'Interactive browser experiment featuring time-based difficulty progression and responsive input controllers.',
-      image: 'additional_project/portfolio.png',
-      imageAlt: 'Game experiment preview',
-      type: 'lab',
-      category: 'Interactive Lab',
-      roleBadge: 'Frontend & Game Logic',
-      tags: ['Angular', 'TypeScript', 'Canvas / CSS'],
-      demoUrl: 'https://yourportfolio.example.com',
-    },
-  ];
+  readonly additionalProjects: Project[] = [];
 }
