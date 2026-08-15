@@ -1,5 +1,7 @@
-<div class="font-sans bg-[#1f1f1f]">
-    <app-navbar></app-navbar>
-<app-footer></app-footer>
-<router-outlet></router-outlet>
-</div>
+<div class="min-h-screen bg-[#090d16] text-slate-100 flex flex-col selection:bg-blue-500/30 selection:text-white">
+  <app-navbar></app-navbar>
+  <main class="flex-1 w-full">
+    <router-outlet></router-outlet>
+  </main>
+  <app-footer></app-footer>
+</div>

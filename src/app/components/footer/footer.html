@@ -1,1 +1,30 @@
-<p>footer works!</p>
+<footer class="border-t border-white/[0.08] bg-[#070a12] text-slate-400 py-12 px-6 sm:px-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <!-- Brand & Bio -->
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-bold text-white shadow-md shadow-blue-500/20">
+        <span>BR</span>
+      </div>
+      <div>
+        <h3 class="text-white font-bold text-base">Has Bunroeun</h3>
+        <p class="text-slate-400 text-xs">UX/UI Designer & Frontend Developer</p>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
+      <a href="#hero" class="text-slate-400 hover:text-white transition-colors no-underline">Home</a>
+      <a href="#about" class="text-slate-400 hover:text-white transition-colors no-underline">About</a>
+      <a href="#skills" class="text-slate-400 hover:text-white transition-colors no-underline">Skills</a>
+      <a href="#projects" class="text-slate-400 hover:text-white transition-colors no-underline">Projects</a>
+      <a href="#contact" class="text-slate-400 hover:text-white transition-colors no-underline">Contact</a>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-xs text-slate-400 text-center md:text-right">
+      <p>© {{ currentYear }} Has Bunroeun. All rights reserved.</p>
+      <p class="text-slate-400 mt-1">Built with Angular & Tailwind CSS</p>
+    </div>
+  </div>
+</footer>
+

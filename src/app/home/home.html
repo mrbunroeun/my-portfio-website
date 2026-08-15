@@ -1,178 +1,899 @@
-<!-- Hero -->
-<section class="relative mt-[10rem] overflow-hidden px-10 ">
- <div class="max-w-7xl mx-auto flex flex-col min-[900px]:flex-row items-center justify-center min-[900px]:justify-between gap-10">
-    <!-- Left: Text -->
-    <div class="flex flex-col gap-4 max-w-[25rem] min-[900px]:max-w-xl">
-      <p class="text-white text-[20px]">
-        Hello Sir, thank for giving me a change by checking my profile. My Name is
-        <span class="text-[#e05252] font-bold">Has Bunroeun</span>
-      </p>
-
-      <h1 class="text-white text-[40px] font-bold leading-tight">Junior</h1>
-
-      <h2 class="text-[40px] font-bold leading-tight">
-        <span class="bg-gradient-to-r from-[#3b82f6] to-[#a78bfa] bg-clip-text text-transparent">UX/UI Designer </span>
-        <span class="text-white">and</span>
-      </h2>
-
-      <h2 class="text-[40px] font-bold leading-tight">
-        <span class="bg-gradient-to-r from-[#22d3ee] to-[#3b82f6] bg-clip-text text-transparent">Frontend Developer</span>
-      </h2>
-
-      <div class="flex items-center gap-4 mt-4">
-        <button class="bg-[#7c6ff0] hover:bg-[#6a5ce0] text-white px-6 py-3 font-semibold cursor-pointer">
-          Email Me
-        </button>
-        <button class="border-2 border-[#3b82f6] text-white hover:bg-[#3b82f6]/10 px-6 py-3 font-semibold cursor-pointer">
-          Contact Me
-        </button>
-      </div>
-    </div>
-
-    <!-- Right: Photo -->
-    <div class="shrink-0">
-      <img
-        src="profile-img/profile.png"
-        alt="profile image"
-        class="max-w-[25rem] border-[10px] border-black"
-      >
-    </div>
-
+<!-- Ambient Radial Glows -->
+<div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+  <div
+    class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] sm:w-[900px] h-[500px] bg-gradient-to-tr from-blue-600/15 via-indigo-600/15 to-purple-600/10 rounded-full blur-3xl">
   </div>
-</section>
-
-
-<!-- Who Am I? -->
-<section class="relative overflow-hidden px-10 py-20 ">
-  <!-- Red diagonal accent line -->
-  <div class="absolute top-0 left-0 w-[2px] h-[150%] bg-[#e05252] rotate-[20deg] origin-top-left"></div>
-
-  <div class="max-w-7xl mx-auto relative z-10 flex flex-col gap-16">
-
-    <!-- Who Am I -->
-    <div class="flex flex-col gap-4 max-w-full">
-      <h2 class="text-[#3b82f6] text-[40px] font-bold">Who Am I?</h2>
-      <p class="text-white/80 text-[30px] leading-relaxed">
-        Fourth-year Information Technology Engineering student passionate about UX/UI design and
-        frontend development. I enjoy creating user-friendly digital experiences and turning ideas into
-        responsive web applications with some of the basic about User Psychology Included
-      </p>
-    </div>
-
-  <div class="flex flex-col gap-6">
-  <h2 class="text-[40px] font-bold">
-    <span class="bg-gradient-to-r from-[#3b82f6] to-[#a78bfa] bg-clip-text text-transparent">Skills</span>
-  </h2>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div *ngFor="let category of skillCategories"
-         class="border-2 border-[#3b82f6] rounded-md p-5 flex flex-col gap-3">
-      <h3 class="text-white text-[20px] font-bold">{{ category.title }}</h3>
-      <ul class="list-disc list-inside text-white/80 text-[20px] flex flex-col gap-1">
-        <li *ngFor="let skill of category.skills">{{ skill }}</li>
-      </ul>
-    </div>
-  </div>
+  <div class="absolute top-[40%] -left-40 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl"></div>
+  <div class="absolute top-[75%] -right-40 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-3xl"></div>
 </div>
 
-  </div>
-</section>
+<div class="relative z-10">
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="hero" class="relative pt-32 pb-16 md:pt-36 md:pb-24 px-6 sm:px-10 overflow-hidden">
+    <div class="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16">
+
+      <!-- Left: Introduction & CTA -->
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 max-w-2xl">
+
+        <!-- Availability Pill -->
+        <div
+          class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs sm:text-sm font-medium shadow-inner backdrop-blur-md">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <span>Available for Roles & Projects</span>
+        </div>
 
 
+        <!-- Greeting & Name -->
+        <div class="flex flex-col gap-2">
+          <p class="text-slate-400 text-base sm:text-lg font-medium tracking-wide">
+            Hello, welcome! I'm
+            <span class="text-white font-semibold">Has Bunroeun</span>
+          </p>
 
-<!-- Projects -->
-<section class="relative overflow-hidden px-10 py-20 ">
-  <div class="max-w-7xl mx-auto relative z-10 flex flex-col gap-8">
+          <!-- Main Distinct Roles -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Crafting Digital Solutions
+          </h1>
 
-    <div class="flex flex-col gap-1">
-      <h2 class="text-[#a78bfa] text-[40px] font-bold">Projects</h2>
-      <h3 class="text-[#e05252] text-[24px] font-bold">Full Stack Development</h3>
-      <h3 class="text-[#e8e8e8] text-[24px] font-semibold">Note that some of my of these project don't have the code becuase the company don't allow to share the source code. If you really want to see I can only show you through my computer directly when interview come.</h3>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div *ngFor="let project of projects"
-           class="border-2 border-[#3b82f6] rounded-md overflow-hidden flex flex-col">
-        <img [src]="project.image" [alt]="project.imageAlt" class="w-full h-40 object-cover" />
-        <div class="p-4 flex flex-col gap-3 flex-1">
-          <div class="flex flex-col gap-1">
-            <h4 class="text-white text-[20px] font-bold">{{ project.title }}</h4>
-            <p class="text-white/70 text-[15px] leading-snug">{{ project.description }}</p>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span *ngFor="let tag of project.tags; let i = index"
-                  [ngClass]="i === 0 ? 'bg-[#e05252]' : 'bg-[#3b3b3b]'"
-                  class="text-white text-[13px] font-medium px-2 py-1 rounded">
-              {{ tag }}
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-2.5 pt-1">
+            <span
+              class="px-3 py-1 rounded-xl bg-blue-500/15 border border-blue-500/30 text-blue-300 font-bold text-sm sm:text-base">
+              🚀 Full-Stack Developer
+            </span>
+            <span
+              class="px-3 py-1 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-bold text-sm sm:text-base">
+              ⚡ Frontend Developer
+            </span>
+            <span
+              class="px-3 py-1 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-300 font-bold text-sm sm:text-base">
+              🎨 UX/UI Designer
             </span>
           </div>
-          <div class="flex items-center gap-3 mt-auto pt-2">
-                <a *ngIf="project.demoUrl"
-                  [href]="project.demoUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="bg-[#7c6ff0] hover:bg-[#6a5ce0] text-white text-[14px] font-semibold px-4 py-2 rounded flex-1 cursor-pointer text-center">
-                  Demo
+        </div>
+
+        <!-- Bio Brief -->
+        <p class="text-slate-300/90 text-base sm:text-lg leading-relaxed max-w-xl">
+          Fourth-year Information Technology Engineering student with end-to-end full-stack & frontend expertise.
+          Specializing in scalable web apps, pixel-perfect responsive interfaces, and human-centered design.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2 w-full sm:w-auto">
+          <a href="#contact"
+            class="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 no-underline cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span>Get In Touch</span>
+          </a>
+
+          <a href="#projects"
+            class="inline-flex items-center justify-center gap-2 bg-slate-900/60 hover:bg-slate-800/80 text-slate-200 hover:text-white border border-slate-700/80 hover:border-blue-500/50 font-semibold px-7 py-3.5 rounded-xl backdrop-blur-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 no-underline cursor-pointer">
+            <span>Explore Projects</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Quick Contacts / Social Badges -->
+        <div class="flex items-center gap-4 pt-2 text-slate-400 text-sm">
+          <span class="text-slate-400">Direct:</span>
+          <a href="https://t.me/HasBunRoeun" target="_blank" rel="noopener noreferrer"
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-slate-300 hover:text-white transition-all no-underline text-xs font-medium">
+            <svg class="w-3.5 h-3.5 text-sky-400 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+            </svg>
+            <span>Telegram</span>
+          </a>
+          <a href="mailto:bunroeunhas@gmail.com"
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-slate-300 hover:text-white transition-all no-underline text-xs font-medium">
+            <svg class="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span>Email</span>
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-slate-300 hover:text-white transition-all no-underline text-xs font-medium">
+            <svg class="w-3.5 h-3.5 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+            <span>GitHub</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Right: Profile Image with Modern Glass Frame -->
+      <div class="relative shrink-0 flex items-center justify-center">
+        <!-- Ambient Glow under photo -->
+        <div
+          class="absolute inset-0 bg-gradient-to-tr from-cyan-500/35 via-blue-600/35 to-purple-600/35 rounded-3xl blur-3xl transform scale-100 -z-10">
+        </div>
+
+        <!-- Glass Frame Container -->
+        <div
+          class="relative p-2.5 sm:p-3 rounded-3xl bg-gradient-to-b from-white/20 via-white/10 to-white/0 border border-white/25 shadow-2xl backdrop-blur-md">
+          <div
+            class="w-72 sm:w-[26rem] md:w-[28rem] lg:w-[32rem] max-w-full rounded-2xl overflow-hidden bg-slate-900 shadow-inner">
+            <img src="profile-img/profile.png" alt="Has Bunroeun - UX/UI Designer & Frontend Developer"
+              class="w-full h-auto object-cover object-center transform hover:scale-105 transition-transform duration-500" />
+          </div>
+
+          <!-- Floating Badge Top Right -->
+          <div
+            class="absolute -top-3.5 -right-3.5 flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/95 border border-blue-500/40 text-blue-300 text-xs sm:text-sm font-semibold shadow-2xl backdrop-blur-md">
+            <span>✨</span>
+            <span>Full-Stack & UI/UX</span>
+          </div>
+
+          <!-- Floating Badge Bottom Left -->
+          <div
+            class="absolute -bottom-3.5 -left-3.5 flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/95 border border-indigo-500/40 text-indigo-300 text-xs sm:text-sm font-semibold shadow-2xl backdrop-blur-md">
+            <span>🎓</span>
+            <span>4th Year IT Student</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==================== TARGET ROLES & SPECIALIZATION MATRIX ==================== -->
+  <section class="relative py-12 px-6 sm:px-10 overflow-hidden border-t border-white/[0.06] bg-slate-950/60">
+    <div class="max-w-7xl mx-auto flex flex-col gap-8">
+      
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div class="flex flex-col gap-1">
+          <span class="text-xs font-bold tracking-widest uppercase text-blue-400">Position Specializations</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Target Roles & Capabilities</h2>
+        </div>
+        <p class="text-slate-400 text-sm max-w-md">
+          Core engineering proficiencies and specialized capabilities across modern web development.
+        </p>
+      </div>
+
+      <!-- 3 Distinct Role Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div
+          *ngFor="let role of targetRoles"
+          class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between gap-6 border border-white/[0.08] relative group"
+        >
+          <div class="flex flex-col gap-4">
+            <!-- Header with Level Badge -->
+            <div class="flex items-center justify-between">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-tr {{ role.color }} flex items-center justify-center text-white shadow-lg">
+                @if (role.icon === 'stack') {
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                  </svg>
+                } @else if (role.icon === 'code') {
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                  </svg>
+                } @else {
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4 4 4 0 014-4c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2zM15 3a4 4 0 014 4 4 4 0 01-4 4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2zM9 13l6-6"/>
+                  </svg>
+                }
+              </div>
+
+              <!-- Specialization Tag -->
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-300 border border-blue-500/25">
+                {{ role.level }}
+              </span>
+            </div>
+
+
+            <div>
+              <h3 class="text-white text-xl font-bold group-hover:text-blue-400 transition-colors">{{ role.title }}</h3>
+              <p class="text-slate-400 text-xs sm:text-sm mt-1 leading-relaxed">{{ role.tagline }}</p>
+            </div>
+          </div>
+
+          <!-- Highlight list -->
+          <div class="flex flex-wrap gap-1.5 pt-3 border-t border-white/[0.08]">
+            <span
+              *ngFor="let item of role.highlights"
+              class="px-2.5 py-1 rounded-lg bg-white/[0.04] text-slate-300 text-xs font-medium border border-white/[0.06]"
+            >
+              {{ item }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==================== WHO AM I / ABOUT ME ==================== -->
+  <section id="about" class="relative py-24 px-6 sm:px-10 overflow-hidden border-t border-white/[0.06]">
+    <div class="max-w-7xl mx-auto flex flex-col gap-12">
+
+      <!-- Section Header -->
+      <div class="flex flex-col gap-2">
+        <div class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-blue-400">
+          <span class="w-6 h-0.5 bg-blue-500 rounded-full"></span>
+          <span>About Me</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+          Designing with Purpose, <span
+            class="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Coding with
+            Precision</span>
+        </h2>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
+        <!-- Left: Narrative Story Card -->
+        <div
+          class="lg:col-span-7 glass-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between gap-6 border border-white/[0.08] relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-48 h-48 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div class="flex flex-col gap-5 relative z-10">
+            <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+              <span>Who Am I?</span>
+            </h3>
+
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+              I am a fourth-year <span class="text-white font-medium">Information Technology Engineering student</span>
+              bridging the disciplines of Full-Stack Web Development, Frontend Engineering, and UX/UI Design.
+            </p>
+
+            <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+              I develop complete, reliable web architectures — handling both complex frontend SPAs (Angular 21, React, Tailwind) and robust backend APIs & databases (Laravel, Next.js, MySQL). Backed by foundations in <span class="text-indigo-400 font-medium">User Psychology</span>, I design interfaces that are conversion-focused and human-friendly.
+            </p>
+          </div>
+
+          <!-- Highlight Keywords -->
+          <div class="flex flex-wrap gap-2 pt-2 border-t border-white/[0.08]">
+            <span
+              class="px-3 py-1 rounded-lg bg-blue-500/10 text-blue-300 text-xs font-semibold border border-blue-500/20">Full-Stack Architecture</span>
+            <span
+              class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-300 text-xs font-semibold border border-cyan-500/20">Frontend Engineering</span>
+            <span
+              class="px-3 py-1 rounded-lg bg-purple-500/10 text-purple-300 text-xs font-semibold border border-purple-500/20">UX/UI Psychology</span>
+            <span
+              class="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-300 text-xs font-semibold border border-emerald-500/20">API Integration</span>
+          </div>
+        </div>
+
+        <!-- Right: 4 Metric / Feature Highlights -->
+        <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          <div
+            class="glass-card rounded-2xl p-6 flex flex-col gap-3 border border-white/[0.08] hover:border-blue-500/30 transition-colors">
+            <div
+              class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-bold">
+              🎓
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-base">Education</h4>
+              <p class="text-slate-400 text-sm mt-1">4th Year Information Technology Engineering</p>
+            </div>
+          </div>
+
+          <div
+            class="glass-card rounded-2xl p-6 flex flex-col gap-3 border border-white/[0.08] hover:border-purple-500/30 transition-colors">
+            <div
+              class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 font-bold">
+              🎨
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-base">UX/UI Design</h4>
+              <p class="text-slate-400 text-sm mt-1">Figma wireframing, prototyping & design systems</p>
+            </div>
+          </div>
+
+          <div
+            class="glass-card rounded-2xl p-6 flex flex-col gap-3 border border-white/[0.08] hover:border-cyan-500/30 transition-colors">
+            <div
+              class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold">
+              ⚡
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-base">Frontend & Full-Stack</h4>
+              <p class="text-slate-400 text-sm mt-1">Angular 21, React, Laravel, MySQL & Tailwind</p>
+            </div>
+          </div>
+
+          <div
+            class="glass-card rounded-2xl p-6 flex flex-col gap-3 border border-white/[0.08] hover:border-emerald-500/30 transition-colors">
+            <div
+              class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold">
+              🚀
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-base">Commercial</h4>
+              <p class="text-slate-400 text-sm mt-1">6+ real-world client platforms delivered</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==================== SKILLS & TECHNOLOGIES ==================== -->
+  <section id="skills"
+    class="relative py-24 px-6 sm:px-10 overflow-hidden border-t border-white/[0.06] bg-slate-950/40">
+    <div class="max-w-7xl mx-auto flex flex-col gap-12">
+
+      <!-- Section Header -->
+      <div class="flex flex-col gap-2">
+        <div class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-blue-400">
+          <span class="w-6 h-0.5 bg-blue-500 rounded-full"></span>
+          <span>Technical Expertise</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+          Skills & <span
+            class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Technologies</span>
+        </h2>
+        <p class="text-slate-400 text-base max-w-2xl">
+          Core toolkits, frameworks, and design proficiencies I utilize across Full-Stack, Frontend, and UX/UI domains.
+        </p>
+      </div>
+
+      <!-- Skills Category Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let category of skillCategories"
+          class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between gap-6 border border-white/[0.08] relative group">
+          <!-- Top Accent Line -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <!-- Icon Container -->
+              <div
+                class="w-10 h-10 rounded-xl bg-gradient-to-tr {{ category.color }} flex items-center justify-center text-white shadow-md">
+                @if (category.icon === 'frontend') {
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                } @else if (category.icon === 'design') {
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 21a4 4 0 01-4-4 4 4 0 014-4c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2zM15 3a4 4 0 014 4 4 4 0 01-4 4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2zM9 13l6-6" />
+                </svg>
+                } @else if (category.icon === 'backend') {
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+                } @else if (category.icon === 'tools') {
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                } @else {
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                }
+              </div>
+
+              <h3 class="text-white text-lg font-bold">{{ category.title }}</h3>
+            </div>
+
+            <span
+              class="text-[11px] font-semibold tracking-wide uppercase px-2.5 py-1 rounded-full bg-white/[0.05] text-slate-300 border border-white/[0.08]">
+              {{ category.badge }}
+            </span>
+          </div>
+
+          <!-- Skill Badges -->
+          <div class="flex flex-wrap gap-2">
+            <span *ngFor="let skill of category.skills"
+              class="px-3 py-1.5 rounded-xl bg-white/[0.04] group-hover:bg-white/[0.07] border border-white/[0.07] group-hover:border-blue-500/30 text-slate-300 hover:text-white text-xs font-medium transition-all">
+              {{ skill }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==================== FEATURED PROJECTS (FULL STACK & FRONTEND CATEGORIZED) ==================== -->
+  <section id="projects" class="relative py-24 px-6 sm:px-10 overflow-hidden border-t border-white/[0.06]">
+    <div class="max-w-7xl mx-auto flex flex-col gap-10">
+
+      <!-- Section Header & Filter Tabs -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="flex flex-col gap-2">
+          <div class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-blue-400">
+            <span class="w-6 h-0.5 bg-blue-500 rounded-full"></span>
+            <span>Project Portfolio</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+            Featured <span
+              class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Projects</span>
+          </h2>
+          <p class="text-slate-400 text-base max-w-xl">
+            Filtered by technical role: Full-Stack applications, Frontend SPAs, and Interactive Labs.
+          </p>
+        </div>
+
+        <!-- Interactive Category Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-slate-900/90 border border-white/[0.08] backdrop-blur-md self-start md:self-auto">
+          <button
+            type="button"
+            (click)="setProjectFilter('all')"
+            [ngClass]="selectedProjectFilter === 'all' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+          >
+            All ({{ projects.length + additionalProjects.length }})
+          </button>
+          
+          <button
+            type="button"
+            (click)="setProjectFilter('fullstack')"
+            [ngClass]="selectedProjectFilter === 'fullstack' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+          >
+            Full-Stack ({{ fullStackProjects.length }})
+          </button>
+
+          <button
+            type="button"
+            (click)="setProjectFilter('frontend')"
+            [ngClass]="selectedProjectFilter === 'frontend' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+          >
+            Frontend ({{ frontendProjects.length }})
+          </button>
+
+          <button
+            type="button"
+            (click)="setProjectFilter('lab')"
+            [ngClass]="selectedProjectFilter === 'lab' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+          >
+            Labs
+          </button>
+        </div>
+      </div>
+
+      <!-- Professional NDA & Commercial Notice Banner -->
+      <div
+        class="glass-card rounded-2xl p-5 sm:p-6 border border-blue-500/25 bg-blue-950/20 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <div
+          class="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </div>
+        <div class="flex flex-col gap-1 flex-1">
+          <h4 class="text-white font-bold text-sm sm:text-base flex items-center gap-2">
+            <span>Enterprise & Client NDA Notice</span>
+            <span
+              class="text-[10px] uppercase font-bold bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full border border-blue-500/30">Client
+              Protection</span>
+          </h4>
+          <p class="text-slate-300/80 text-xs sm:text-sm leading-relaxed">
+            Some client project source codes are protected under company non-disclosure agreements. Live previews and
+            direct architecture walkthroughs can be demonstrated during interview sessions upon request.
+          </p>
+        </div>
+      </div>
+
+      <!-- Filtered Project Cards Grid (3 Columns on Desktop) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div *ngFor="let project of filteredProjects"
+          class="glass-card glass-card-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col group">
+          
+          <!-- Image Showcase -->
+          <div class="relative w-full aspect-video bg-slate-950 overflow-hidden border-b border-white/[0.08]">
+            <img [src]="project.image" [alt]="project.imageAlt"
+              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+
+            <!-- Category & Role Badge -->
+            <div class="absolute top-3 left-3 flex flex-wrap gap-2">
+              <span
+                class="px-2.5 py-1 rounded-lg bg-slate-900/90 backdrop-blur-md border border-white/15 text-white text-xs font-semibold shadow-lg">
+                {{ project.category }}
+              </span>
+            </div>
+
+            <!-- Role Badge in Image Overlay -->
+            <div class="absolute bottom-2.5 left-3 right-3">
+              <span
+                class="inline-block px-2.5 py-1 rounded-lg bg-slate-950/85 backdrop-blur-md border border-blue-500/30 text-blue-300 text-[11px] font-semibold truncate max-w-full">
+                {{ project.roleBadge }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Card Content -->
+          <div class="p-6 flex flex-col justify-between flex-1 gap-5">
+            <div class="flex flex-col gap-2.5">
+              <h3 class="text-white text-xl font-bold group-hover:text-blue-400 transition-colors">
+                {{ project.title }}
+              </h3>
+
+              <p class="text-slate-300/80 text-sm leading-relaxed">
+                {{ project.description }}
+              </p>
+            </div>
+
+            <!-- Tech Tags -->
+            <div class="flex flex-col gap-4 pt-2">
+              <div class="flex flex-wrap gap-1.5">
+                <span *ngFor="let tag of project.tags; let i = index"
+                  [ngClass]="i === 0 ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' : 'bg-white/[0.04] text-slate-300 border-white/[0.08]'"
+                  class="text-[11px] font-medium px-2.5 py-1 rounded-lg border">
+                  {{ tag }}
+                </span>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex items-center gap-3 pt-3 border-t border-white/[0.08]">
+                <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank" rel="noopener noreferrer"
+                  class="flex-1 inline-flex items-center justify-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-md transition-colors no-underline cursor-pointer">
+                  <span>Live Demo</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
                 </a>
-                <a *ngIf="project.codeUrl"
-                  [href]="project.codeUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="bg-[#7c6ff0] hover:bg-[#6a5ce0] text-white text-[14px] font-semibold px-4 py-2 rounded flex-1 cursor-pointer text-center">
-                  Code
+
+                <a *ngIf="project.codeUrl" [href]="project.codeUrl" target="_blank" rel="noopener noreferrer"
+                  class="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs font-semibold px-4 py-2.5 rounded-xl transition-colors no-underline cursor-pointer">
+                  <span>Code</span>
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                  </svg>
                 </a>
+
+                <!-- NDA Badge when codeUrl is not provided -->
+                <div *ngIf="!project.codeUrl"
+                  class="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-900/60 text-slate-400 border border-slate-800 text-xs font-medium px-3 py-2.5 rounded-xl cursor-default">
+                  <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  <span>Private NDA</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ==================== CALL TO ACTION & DIRECT TELEGRAM CONTACT FORM ==================== -->
+  <section id="contact" class="relative py-28 px-6 sm:px-10 overflow-hidden border-t border-white/[0.06]">
+    <!-- Background Ambient Glow -->
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/20 to-indigo-950/40 pointer-events-none">
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10 flex flex-col gap-12">
+
+      <!-- Section Header -->
+      <div class="flex flex-col items-center text-center gap-3 max-w-2xl mx-auto">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-semibold">
+          <span>💬 Get In Touch</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+          Let's Build Something <span
+            class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Extraordinary</span>
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg">
+          Have a project in mind or looking for a skilled Full-Stack / Frontend Developer & UX/UI Designer? Send me a message directly to my Telegram!
+        </p>
+      </div>
+
+
+      <!-- Contact Grid: Left Info & Right Interactive Form -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Left: Quick Contact Info & Direct Links -->
+        <div class="lg:col-span-5 flex flex-col gap-6">
+
+          <!-- Direct Telegram Channel Card -->
+          <div
+            class="glass-card rounded-3xl p-7 border border-blue-500/30 bg-gradient-to-b from-blue-950/30 via-slate-900/60 to-slate-900/40 relative overflow-hidden flex flex-col gap-6 shadow-xl">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-400 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-sky-500/30">
+                <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-white text-xl font-bold">Chat on Telegram</h3>
+                <p class="text-slate-400 text-sm">&#64;HasBunRoeun</p>
               </div>
             </div>
-        </div>
-      </div>
-    </div>
 
-</section>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Prefer instant messaging? You can fill out the form or click below to message me directly on Telegram.
+            </p>
 
-<!-- Additional Projects -->
-<section class="relative overflow-hidden px-10 py-20 ">
-  <div class="max-w-7xl mx-auto relative z-10 flex flex-col gap-8">
-
-    <div class="flex flex-col gap-1">
-      <h2 class="text-[#a78bfa] text-[40px] font-bold">Additional Projects</h2>
-      <h3 class="text-[#e05252] text-[24px] font-bold">Personal & Practice Projects</h3>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div *ngFor="let project of additionalProjects"
-           class="border-2 border-[#3b82f6] rounded-md overflow-hidden flex flex-col">
-        <img [src]="project.image" [alt]="project.imageAlt" class="w-full h-40 object-cover" />
-        <div class="p-4 flex flex-col gap-3 flex-1">
-          <div class="flex flex-col gap-1">
-            <h4 class="text-white text-[20px] font-bold">{{ project.title }}</h4>
-            <p class="text-white/70 text-[15px] leading-snug">{{ project.description }}</p>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span *ngFor="let tag of project.tags; let i = index"
-                  [ngClass]="i === 0 ? 'bg-[#e05252]' : 'bg-[#3b3b3b]'"
-                  class="text-white text-[13px] font-medium px-2 py-1 rounded">
-              {{ tag }}
-            </span>
-          </div>
-          <div class="flex items-center gap-3 mt-auto pt-2">
-            <a *ngIf="project.demoUrl"
-              [href]="project.demoUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-[#7c6ff0] hover:bg-[#6a5ce0] text-white text-[14px] font-semibold px-4 py-2 rounded flex-1 cursor-pointer text-center">
-              Demo
-            </a>
-            <a *ngIf="project.codeUrl"
-              [href]="project.codeUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-[#7c6ff0] hover:bg-[#6a5ce0] text-white text-[14px] font-semibold px-4 py-2 rounded flex-1 cursor-pointer text-center">
-              Code
+            <a href="https://t.me/HasBunRoeun" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:-translate-y-0.5 transition-all duration-200 no-underline cursor-pointer text-sm">
+              <span>Open Telegram Directly</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
             </a>
           </div>
-        </div>
-      </div>
-    </div>
 
-  </div>
-</section>
+          <!-- Additional Contact Channels -->
+          <div class="glass-card rounded-2xl p-6 border border-white/[0.08] flex flex-col gap-4">
+
+            <a href="mailto:bunroeunhas@gmail.com"
+              class="flex items-center gap-4 p-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.06] hover:border-blue-500/30 transition-all no-underline group">
+              <div
+                class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-slate-400 text-xs font-medium">Direct Email</span>
+                <span
+                  class="text-white text-sm font-semibold group-hover:text-blue-400 transition-colors">bunroeunhas&#64;gmail.com</span>
+              </div>
+            </a>
+
+            <div class="flex items-center gap-4 p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <div
+                class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-slate-400 text-xs font-medium">Response Time</span>
+                <span class="text-white text-sm font-semibold">Usually replies within a few hours</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right: Interactive Telegram Submission Form -->
+        <div
+          class="lg:col-span-7 glass-card rounded-3xl p-8 sm:p-10 border border-white/[0.1] bg-slate-900/70 shadow-2xl relative">
+
+          <form (ngSubmit)="submitTelegramForm()" class="flex flex-col gap-5">
+
+            <div class="flex flex-col gap-1 pb-2 border-b border-white/[0.08]">
+              <h3 class="text-white text-xl font-bold">Send Direct Inquiry</h3>
+              <p class="text-slate-400 text-xs sm:text-sm">
+                Fill this in and hit Send — it will automatically compose and open your message in Telegram!
+              </p>
+            </div>
+
+            <!-- Name & Email Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              <div class="flex flex-col gap-2">
+                <label class="text-slate-300 text-xs font-semibold tracking-wide uppercase">
+                  Your Name <span class="text-red-400">*</span>
+                </label>
+                <input type="text" name="name" [(ngModel)]="formData.name" required placeholder="e.g. John Doe"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-white placeholder-slate-500 text-sm outline-none transition-all" />
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <label class="text-slate-300 text-xs font-semibold tracking-wide uppercase">
+                  Email Address <span class="text-red-400">*</span>
+                </label>
+                <input type="email" name="email" [(ngModel)]="formData.email" required
+                  placeholder="e.g. john@example.com"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-white placeholder-slate-500 text-sm outline-none transition-all" />
+              </div>
+
+            </div>
+
+            <!-- Company & Phone / Telegram Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              <div class="flex flex-col gap-2">
+                <label class="text-slate-300 text-xs font-semibold tracking-wide uppercase">
+                  Company / Organization <span class="text-slate-500 font-normal">(Optional)</span>
+                </label>
+                <input type="text" name="company" [(ngModel)]="formData.company" placeholder="e.g. Acme Studio"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-white placeholder-slate-500 text-sm outline-none transition-all" />
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <label class="text-slate-300 text-xs font-semibold tracking-wide uppercase">
+                  Phone / Telegram <span class="text-slate-500 font-normal">(Optional)</span>
+                </label>
+                <input type="text" name="phone" [(ngModel)]="formData.phone" placeholder="e.g. +855... or @username"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-white placeholder-slate-500 text-sm outline-none transition-all" />
+              </div>
+
+            </div>
+
+            <!-- Custom Interactive Glassmorphism Dropdown -->
+            <div class="flex flex-col gap-2 relative" id="custom-dropdown-container">
+              <label class="text-slate-300 text-xs font-semibold tracking-wide uppercase flex items-center justify-between">
+                <span>Project / Role Type</span>
+                <span class="text-blue-400 text-[11px] font-medium lowercase">select one</span>
+              </label>
+
+              <!-- Trigger Button -->
+              <button
+                type="button"
+                (click)="toggleDropdown()"
+                class="w-full px-4 py-3.5 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-blue-500/50 focus:border-blue-500 text-left text-white text-sm outline-none transition-all flex items-center justify-between group cursor-pointer shadow-inner"
+                [class.border-blue-500]="isDropdownOpen"
+                [class.ring-1]="isDropdownOpen"
+                [class.ring-blue-500]="isDropdownOpen"
+              >
+                <div class="flex items-center gap-3">
+                  <!-- Active Option Icon -->
+                  <div class="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                    @if (selectedServiceOption.icon === 'stack') {
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                      </svg>
+                    } @else if (selectedServiceOption.icon === 'code') {
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                      </svg>
+                    } @else if (selectedServiceOption.icon === 'design') {
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4 4 4 0 014-4c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2zM15 3a4 4 0 014 4 4 4 0 01-4 4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2zM9 13l6-6"/>
+                      </svg>
+                    } @else if (selectedServiceOption.icon === 'sparkles') {
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                      </svg>
+                    } @else {
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                      </svg>
+                    }
+                  </div>
+
+                  <div class="flex flex-col">
+                    <span class="text-white font-semibold text-sm">{{ selectedServiceOption.label }}</span>
+                    <span class="text-slate-400 text-xs truncate">{{ selectedServiceOption.description }}</span>
+                  </div>
+                </div>
+
+                <!-- Chevron Animated Arrow -->
+                <div class="flex items-center gap-2">
+                  <span class="hidden sm:inline-block text-[11px] font-semibold px-2 py-0.5 rounded-md bg-white/[0.06] text-blue-300 border border-white/10">
+                    {{ selectedServiceOption.badge }}
+                  </span>
+                  <svg
+                    class="w-4 h-4 text-slate-400 group-hover:text-white transition-transform duration-200"
+                    [class.rotate-180]="isDropdownOpen"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </div>
+              </button>
+
+              <!-- Floating Custom Dropdown Menu -->
+              @if (isDropdownOpen) {
+                <div class="absolute top-[100%] left-0 right-0 mt-2 p-2 rounded-2xl bg-slate-900/95 border border-white/15 shadow-2xl backdrop-blur-2xl z-50 flex flex-col gap-1.5 animate-in fade-in slide-in-from-top-2 duration-200">
+                  @for (option of serviceOptions; track option.value) {
+                    <button
+                      type="button"
+                      (click)="selectService(option.value)"
+                      class="w-full p-2.5 rounded-xl text-left flex items-center justify-between transition-all cursor-pointer group"
+                      [ngClass]="formData.service === option.value ? 'bg-blue-600/20 border border-blue-500/40 text-white' : 'hover:bg-white/[0.06] text-slate-300 hover:text-white border border-transparent'"
+                    >
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
+                          [ngClass]="formData.service === option.value ? 'bg-blue-500 text-white shadow-md' : 'bg-white/[0.05] text-slate-400 group-hover:text-blue-400 group-hover:bg-blue-500/10'"
+                        >
+                          @if (option.icon === 'stack') {
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                            </svg>
+                          } @else if (option.icon === 'code') {
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                            </svg>
+                          } @else if (option.icon === 'design') {
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4 4 4 0 014-4c1.1 0 2 .9 2 2 0 1.1-.9 2-2 2zM15 3a4 4 0 014 4 4 4 0 01-4 4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2zM9 13l6-6"/>
+                            </svg>
+                          } @else if (option.icon === 'sparkles') {
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                            </svg>
+                          } @else {
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                            </svg>
+                          }
+                        </div>
+
+                        <div class="flex flex-col">
+                          <span class="font-semibold text-sm" [class.text-white]="formData.service === option.value">{{ option.label }}</span>
+                          <span class="text-slate-400 text-xs">{{ option.description }}</span>
+                        </div>
+                      </div>
+
+                      <!-- Checkmark Icon for Selected -->
+                      @if (formData.service === option.value) {
+                        <div class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                          </svg>
+                        </div>
+                      }
+                    </button>
+                  }
+                </div>
+              }
+            </div>
+
+
+            <!-- Message Textarea -->
+            <div class="flex flex-col gap-2">
+              <label class="text-slate-300 text-xs font-semibold tracking-wide uppercase">
+                Your Message <span class="text-red-400">*</span>
+              </label>
+              <textarea name="message" [(ngModel)]="formData.message" required rows="4"
+                placeholder="Describe your project, timeline, or job opportunity..."
+                class="w-full px-4 py-3 rounded-xl bg-slate-950/70 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-white placeholder-slate-500 text-sm outline-none transition-all resize-y"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+              class="mt-2 w-full inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-400 hover:via-blue-500 hover:to-indigo-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-base">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+              </svg>
+              <span>Send Message to Telegram</span>
+            </button>
+
+            <p class="text-slate-400 text-xs text-center -mt-1">
+              Clicking send will format your inquiry and open Telegram directly with <span
+                class="text-blue-400 font-semibold">&#64;HasBunRoeun</span>.
+            </p>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</div>
