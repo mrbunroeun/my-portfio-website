@@ -470,7 +470,7 @@
   </section>
 
 
-  <!-- ==================== FEATURED PROJECTS (FULL STACK & FRONTEND CATEGORIZED) ==================== -->
+  <!-- ==================== FEATURED PROJECTS (FULL STACK, FRONTEND, BACKEND & UX/UI DESIGN) ==================== -->
   <section id="projects" class="relative py-24 px-6 sm:px-10 overflow-hidden border-t border-white/[0.06]">
     <div class="max-w-7xl mx-auto flex flex-col gap-10">
 
@@ -483,32 +483,44 @@
           </div>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
             Featured <span
-              class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Projects</span>
+              class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Projects & Designs</span>
           </h2>
           <p class="text-slate-400 text-base max-w-xl">
-            Filtered by technical role: Full-Stack applications and Frontend SPAs.
+            Filtered across core engineering and design disciplines: Full Stack, Frontend, Backend, and UX/UI Design.
           </p>
         </div>
 
         <!-- Interactive Category Filter Tabs -->
         <div
-          class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-slate-900/90 border border-white/[0.08] backdrop-blur-md self-start md:self-auto shadow-lg shadow-black/20">
+          class="flex flex-wrap items-center gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-slate-900/90 border border-white/[0.08] backdrop-blur-md self-start md:self-auto shadow-lg shadow-black/20">
           <button type="button" (click)="setProjectFilter('all')"
             [ngClass]="selectedProjectFilter === 'all' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
             All ({{ projects.length }})
           </button>
 
           <button type="button" (click)="setProjectFilter('fullstack')"
             [ngClass]="selectedProjectFilter === 'fullstack' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
             Full-Stack ({{ fullStackProjects.length }})
           </button>
 
           <button type="button" (click)="setProjectFilter('frontend')"
             [ngClass]="selectedProjectFilter === 'frontend' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
             Frontend ({{ frontendProjects.length }})
+          </button>
+
+          <button type="button" (click)="setProjectFilter('backend')"
+            [ngClass]="selectedProjectFilter === 'backend' ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
+            Backend ({{ backendProjects.length }})
+          </button>
+
+          <button type="button" (click)="setProjectFilter('uiux')"
+            [ngClass]="selectedProjectFilter === 'uiux' ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
+            UX/UI Design ({{ uiuxProjects.length }})
           </button>
         </div>
       </div>
@@ -538,6 +550,7 @@
       </div>
 
       <!-- Filtered Project Cards Grid (3 Columns on Desktop) -->
+      @if (isFilterVisible) {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         @for (project of filteredProjects; track project.title + '_' + filterAnimationKey; let idx = $index) {
         <div [style.z-index]="activeCodeDropdownTitle === project.title ? 60 : 1"
@@ -685,8 +698,19 @@
                 </a>
                 }
 
-                <!-- NDA Badge when codeUrl and codeRepos are not provided and no caseStudy -->
-                @if (!project.codeUrl && (!project.codeRepos || project.codeRepos.length === 0) && !project.caseStudy) {
+                <!-- Dedicated Figma Design Button for UX/UI Projects -->
+                @if (project.figmaUrl) {
+                <a [href]="project.figmaUrl" target="_blank" rel="noopener noreferrer"
+                  class="flex-1 inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-purple-600/30 to-pink-600/30 hover:from-purple-600/50 hover:to-pink-600/50 text-purple-200 hover:text-white border border-purple-500/40 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all no-underline cursor-pointer shadow-sm shadow-purple-500/20">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.333 7.667a3.833 3.833 0 1 0 0-7.667h-6.666a3.833 3.833 0 0 0 0 7.667h6.666zM8.667 8.167h-.001a3.833 3.833 0 1 0 0 7.666h.001v-7.666zM15.333 8.167a3.833 3.833 0 1 0 3.834 3.833 3.833 3.833 0 0 0-3.834-3.833zM8.667 16.333a3.833 3.833 0 1 0 3.833 3.834v-3.834H8.667z"/>
+                  </svg>
+                  <span>Figma File</span>
+                </a>
+                }
+
+                <!-- NDA Badge when codeUrl, codeRepos, figmaUrl, and caseStudy are not provided -->
+                @if (!project.codeUrl && (!project.codeRepos || project.codeRepos.length === 0) && !project.caseStudy && !project.figmaUrl) {
                 <div
                   class="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-900/60 text-slate-400 border border-slate-800 text-xs font-medium px-3 py-2.5 rounded-xl cursor-default">
                   <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -703,6 +727,7 @@
         </div>
         }
       </div>
+      }
 
     </div>
   </section>

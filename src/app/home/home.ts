@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -46,12 +46,13 @@ export interface Project {
   description: string;
   image: string;
   imageAlt: string;
-  type: 'fullstack' | 'frontend';
+  types: ('fullstack' | 'frontend' | 'backend' | 'uiux')[];
   category: string;
   roleBadge: string;
   tags: string[];
   demoUrl?: string;
   codeUrl?: string;
+  figmaUrl?: string;
   codeRepos?: CodeRepoOption[];
   caseStudy?: ProjectCaseStudy;
 }
@@ -80,14 +81,18 @@ export interface ServiceOption {
   styleUrl: './home.css',
 })
 export class Home {
-  selectedProjectFilter: 'all' | 'fullstack' | 'frontend' = 'all';
+  selectedProjectFilter: 'all' | 'fullstack' | 'frontend' | 'backend' | 'uiux' = 'all';
   isDropdownOpen = false;
   activeCaseStudyProject: Project | null = null;
   activeExpandedImage: { image: string; title: string; desc: string } | null = null;
   activeCodeDropdownTitle: string | null = null;
   isCodeDropdownDropUp = false;
+  isFilterVisible = true;
 
-  constructor(private readonly elementRef: ElementRef) {}
+  constructor(
+    private readonly elementRef: ElementRef,
+    private readonly cdr: ChangeDetectorRef
+  ) {}
 
   toggleCodeDropdown(title: string, event: MouseEvent) {
     event.stopPropagation();
@@ -235,22 +240,38 @@ export class Home {
 
   filterAnimationKey = 0;
 
-  setProjectFilter(filter: 'all' | 'fullstack' | 'frontend') {
+  setProjectFilter(filter: 'all' | 'fullstack' | 'frontend' | 'backend' | 'uiux') {
     this.selectedProjectFilter = filter;
     this.filterAnimationKey++;
+
+    // Unmount and remount project cards to force browser to run drop animation from 0% on EVERY card
+    this.isFilterVisible = false;
+    setTimeout(() => {
+      this.isFilterVisible = true;
+      this.cdr.markForCheck();
+    }, 15);
   }
 
   get filteredProjects(): Project[] {
-    if (this.selectedProjectFilter === 'all') return this.projects;
-    return this.projects.filter((p) => p.type === this.selectedProjectFilter);
+    const filter = this.selectedProjectFilter;
+    if (filter === 'all') return this.projects;
+    return this.projects.filter((p) => p.types.includes(filter));
   }
 
   get fullStackProjects(): Project[] {
-    return this.projects.filter((p) => p.type === 'fullstack');
+    return this.projects.filter((p) => p.types.includes('fullstack'));
   }
 
   get frontendProjects(): Project[] {
-    return this.projects.filter((p) => p.type === 'frontend');
+    return this.projects.filter((p) => p.types.includes('frontend'));
+  }
+
+  get backendProjects(): Project[] {
+    return this.projects.filter((p) => p.types.includes('backend'));
+  }
+
+  get uiuxProjects(): Project[] {
+    return this.projects.filter((p) => p.types.includes('uiux'));
   }
 
   submitTelegramForm() {
@@ -372,7 +393,7 @@ Sent from Bunroeun's Portfolio`;
       description: 'Full-stack skincare ecommerce and personalized recommendation web application featuring an integrated AI skincare chatbot assistant.',
       image: 'projects/SKINME.png',
       imageAlt: 'SKIN.ME project preview',
-      type: 'fullstack',
+      types: ['fullstack', 'frontend', 'backend'],
       category: 'Full-Stack & AI',
       roleBadge: 'Full-Stack Lead (Next.js + MySQL + Gemini)',
       tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'MySQL', 'Gemini AI'],
@@ -397,7 +418,7 @@ Sent from Bunroeun's Portfolio`;
       description: 'High-impact multimedia showcase portal for LED screen and digital advertising solutions. Built complete responsive frontend and implemented backend database adjustments.',
       image: 'projects/led_media.png',
       imageAlt: 'LED Media project preview',
-      type: 'fullstack',
+      types: ['fullstack', 'frontend', 'backend'],
       category: 'Full-Stack & Media',
       roleBadge: 'Full-Stack Contributor (Frontend + MySQL Backend)',
       tags: ['Laravel', 'Blade', 'Tailwind CSS', 'JavaScript', 'MySQL', 'PHP'],
@@ -408,7 +429,7 @@ Sent from Bunroeun's Portfolio`;
       description: 'Commercial web platform for stage effects and atmosphere solutions. Directed full frontend development with responsive layouts and collaborated on backend enhancements.',
       image: 'projects/envy_stage.png',
       imageAlt: 'Envy Stage project preview',
-      type: 'fullstack',
+      types: ['fullstack', 'frontend', 'backend'],
       category: 'Full-Stack Commercial',
       roleBadge: 'Frontend Lead & Backend Support',
       tags: ['Laravel', 'Blade', 'Tailwind CSS', 'JavaScript', 'MySQL', 'PHP'],
@@ -419,7 +440,7 @@ Sent from Bunroeun's Portfolio`;
       description: 'Modern agricultural enterprise showcase platform featuring product galleries, catalog navigation, and dynamic inquiry interfaces.',
       image: 'projects/skk_agriculture.png',
       imageAlt: 'SKK Agriculture project preview',
-      type: 'frontend',
+      types: ['fullstack', 'frontend', 'backend'],
       category: 'Enterprise Showcase',
       roleBadge: 'Frontend Developer (100% FE)',
       tags: ['Laravel', 'Blade', 'JavaScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
@@ -430,7 +451,7 @@ Sent from Bunroeun's Portfolio`;
       description: 'Dynamic stage equipment and atmosphere solution corporate portal. Designed and built 100% responsive frontend layout and user interface.',
       image: 'projects/metro.png',
       imageAlt: 'Metro project preview',
-      type: 'frontend',
+      types: ['fullstack', 'frontend', 'backend'],
       category: 'Commercial Portal',
       roleBadge: 'Frontend Developer (100% FE)',
       tags: ['Laravel', 'Blade', 'Tailwind CSS', 'JavaScript', 'HTML5', 'CSS3'],
@@ -441,7 +462,7 @@ Sent from Bunroeun's Portfolio`;
       description: 'Mechanical, Electrical, and Plumbing engineering services website. Executed a comprehensive UX redesign, responsive layout overhaul, and frontend performance optimizations.',
       image: 'projects/master_mep.png',
       imageAlt: 'Master MEP project preview',
-      type: 'frontend',
+      types: ['fullstack', 'frontend', 'backend'],
       category: 'Engineering & UX Redesign',
       roleBadge: 'UX/UI & Frontend Redesign (100% Overhaul)',
       tags: ['Laravel', 'Blade', 'JavaScript', 'HTML5', 'CSS3'],
@@ -452,7 +473,7 @@ Sent from Bunroeun's Portfolio`;
       description: 'Modern restaurant and mobile catering web platform built with Angular and TypeScript, featuring dynamic menu structures and responsive layouts modeled after the Metro portal architecture.',
       image: 'additional_project/brweb.png',
       imageAlt: 'BRWeb Catering project preview',
-      type: 'frontend',
+      types: ['frontend'],
       category: 'Angular Web App',
       roleBadge: 'Frontend Lead & UI Structure (Angular TS)',
       tags: ['Angular', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
@@ -463,7 +484,7 @@ Sent from Bunroeun's Portfolio`;
       description: 'Full-stack multi-vendor marketplace featuring dynamic storefront templates, vendor onboarding with admin approval workflows, express checkout (ABA / Bakong), and relational MySQL database architecture.',
       image: 'projects/laravel_ecommerce.png',
       imageAlt: 'Laravel Multi-Vendor E-Commerce Storefront preview',
-      type: 'fullstack',
+      types: ['fullstack', 'frontend', 'backend'],
       category: 'Full-Stack & Multi-Vendor',
       roleBadge: 'Full-Stack Lead (Laravel + MySQL Backend)',
       tags: ['Laravel', 'Blade', 'MySQL', 'PHP', 'CSS3'],
@@ -561,6 +582,50 @@ Sent from Bunroeun's Portfolio`;
         ]
       }
     },
+    {
+      title: 'LOQO Creative Agency',
+      description: 'High-conversion digital agency landing page created in Figma exploring sticky scroll interactions, modern dark theme aesthetics, typography rules, and structured design tokens.',
+      image: 'figma_framer/LOQO Website design.png',
+      imageAlt: 'LOQO Website design in Figma preview',
+      types: ['uiux'],
+      category: 'UX/UI Design',
+      roleBadge: 'Figma UI/UX & Sticky Scroll',
+      tags: ['Figma', 'UI/UX Design', 'Design Systems', 'Prototyping'],
+      figmaUrl: 'https://www.figma.com/design/2wk7NyrXq0fTNh1HMVmr3W/practice--lily-barkery-and-LOQO?node-id=122-6&p=f&t=oklMZAHA4Xv3HVVW-0',
+    },
+    {
+      title: 'Spotify Web App Redesign',
+      description: 'Modernized Spotify web player interface designed in Figma focusing on atomic design components, interactive media card states, typography scales, and empty states UX.',
+      image: 'figma_framer/Design spotify.png',
+      imageAlt: 'Spotify Web App Redesign preview',
+      types: ['uiux'],
+      category: 'UX/UI Design',
+      roleBadge: 'Figma UI/UX & Component Architecture',
+      tags: ['Figma', 'UX/UI Redesign', 'Component System', 'Atomic Design'],
+      figmaUrl: 'https://www.figma.com/design/K4DSabsNMLvblBOrUNZpkS/redesign-spotify--empty-page-and-empty-page?node-id=0-1&p=f&t=hfAjZIVqYv0jHuS8-0',
+    },
+    {
+      title: 'Lily Bakery & Organic Store',
+      description: 'Full web design for organic artisan bakery and fresh foods store in Figma featuring warm aesthetics, visual storytelling, product showcases, and mobile-first layouts.',
+      image: 'figma_framer/enjoy_organic.png',
+      imageAlt: 'Lily Bakery & Organic Store design preview',
+      types: ['uiux'],
+      category: 'UX/UI Design',
+      roleBadge: 'Figma UI/UX & Wireframing',
+      tags: ['Figma', 'Wireframing', 'UI/UX Design', 'Visual Hierarchy'],
+      figmaUrl: 'https://www.figma.com/design/2wk7NyrXq0fTNh1HMVmr3W/new-design-in-figma?node-id=0-1&t=PeEDz82RrMwCzV0a-1',
+    },
+    {
+      title: 'SKIN.ME UI/UX & User Flows',
+      description: 'Comprehensive UI/UX design architecture, user flows, wireframes, and usability testing for the AI-powered personalized skincare e-commerce platform.',
+      image: 'projects/SKINME.png',
+      imageAlt: 'SKIN.ME UI/UX Design System preview',
+      types: ['uiux'],
+      category: 'UX/UI Design',
+      roleBadge: 'Figma User Flows & Wireframing',
+      tags: ['Figma', 'User Flows', 'Wireframing', 'Usability Testing'],
+      figmaUrl: 'https://www.figma.com/design/4sbIdCAHzNKhFXeHkDunGY/SKIN.ME--PORTFOLIO---EMPTY?node-id=979-2&p=f&t=H16dvl6gMxKfACzJ-0',
+    }
   ];
 
   readonly additionalProjects: Project[] = [];
