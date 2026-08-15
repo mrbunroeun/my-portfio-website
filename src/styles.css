@@ -4,6 +4,7 @@
   html {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     color-scheme: dark;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -37,7 +38,10 @@
 }
 
 .glass-card-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .glass-card-hover:hover {
@@ -69,138 +73,131 @@
 @keyframes projectCardDropIn {
   0% {
     opacity: 0;
-    transform: translateY(-36px) scale(0.95);
+    transform: translate3d(0, -28px, 0) scale(0.96);
   }
-  65% {
-    opacity: 0.95;
-    transform: translateY(5px) scale(1.01);
+  70% {
+    opacity: 0.98;
+    transform: translate3d(0, 3px, 0) scale(1.005);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
 .project-card-animate {
-  animation: projectCardDropIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: projectCardDropIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
   will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
-/* ==================== SCROLL-DRIVEN ANIMATIONS ==================== */
+/* ==================== ULTRA-SMOOTH SCROLL-DRIVEN ANIMATIONS ==================== */
 
 /* Top Glowing Scroll Progress Bar */
 .scroll-progress-bar {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3.5px;
+  height: 3px;
   background: linear-gradient(90deg, #3b82f6, #6366f1, #a855f7, #ec4899);
   z-index: 9999;
   box-shadow: 0 0 12px rgba(99, 102, 241, 0.8), 0 0 24px rgba(168, 85, 247, 0.5);
-  transition: width 0.08s ease-out;
+  transition: width 0.15s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
   border-radius: 0 9999px 9999px 0;
 }
 
-/* Base Scroll Reveal Classes */
+/* Base Scroll Reveal Classes with Apple-grade Fluidity */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(32px);
-  filter: blur(4px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
 .scroll-reveal.revealed {
   opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .scroll-reveal-left {
   opacity: 0;
-  transform: translateX(-36px);
-  filter: blur(3px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+  transform: translate3d(-28px, 0, 0);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
 .scroll-reveal-left.revealed {
   opacity: 1;
-  transform: translateX(0);
-  filter: blur(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .scroll-reveal-right {
   opacity: 0;
-  transform: translateX(36px);
-  filter: blur(3px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+  transform: translate3d(28px, 0, 0);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
 .scroll-reveal-right.revealed {
   opacity: 1;
-  transform: translateX(0);
-  filter: blur(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .scroll-reveal-scale {
   opacity: 0;
-  transform: scale(0.93) translateY(24px);
-  filter: blur(3px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+  transform: translate3d(0, 18px, 0) scale(0.96);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
 .scroll-reveal-scale.revealed {
   opacity: 1;
-  transform: scale(1) translateY(0);
-  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
-/* Stagger Delays for Grid Elements */
-.stagger-1 { transition-delay: 80ms; }
-.stagger-2 { transition-delay: 160ms; }
-.stagger-3 { transition-delay: 240ms; }
-.stagger-4 { transition-delay: 320ms; }
-.stagger-5 { transition-delay: 400ms; }
-.stagger-6 { transition-delay: 480ms; }
+/* Fluid Stagger Delays */
+.stagger-1 { transition-delay: 60ms; }
+.stagger-2 { transition-delay: 120ms; }
+.stagger-3 { transition-delay: 180ms; }
+.stagger-4 { transition-delay: 240ms; }
+.stagger-5 { transition-delay: 300ms; }
+.stagger-6 { transition-delay: 360ms; }
 
 /* Floating Ambient Parallax Glow */
 @keyframes ambientFloat {
   0%, 100% {
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: translateY(-24px) scale(1.06);
+    transform: translate3d(0, -20px, 0) scale(1.04);
   }
 }
 
 .animate-ambient-float {
-  animation: ambientFloat 9s ease-in-out infinite;
+  animation: ambientFloat 10s ease-in-out infinite;
 }
 
 @keyframes ambientPulseSlow {
   0%, 100% {
-    opacity: 0.12;
+    opacity: 0.14;
     transform: scale(1);
   }
   50% {
     opacity: 0.22;
-    transform: scale(1.1);
+    transform: scale(1.06);
   }
 }
 
 .animate-ambient-pulse {
-  animation: ambientPulseSlow 7s ease-in-out infinite;
+  animation: ambientPulseSlow 8s ease-in-out infinite;
 }
 
