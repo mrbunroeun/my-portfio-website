@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, HostListener, ChangeDetectorRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -80,7 +80,7 @@ export interface ServiceOption {
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
+export class Home implements AfterViewInit, OnDestroy {
   selectedProjectFilter: 'all' | 'fullstack' | 'frontend' | 'backend' | 'uiux' = 'all';
   isDropdownOpen = false;
   activeCaseStudyProject: Project | null = null;
@@ -89,10 +89,60 @@ export class Home {
   isCodeDropdownDropUp = false;
   isFilterVisible = true;
 
+  scrollProgress = 0;
+  showBackToTop = false;
+  private observer: IntersectionObserver | null = null;
+
   constructor(
     private readonly elementRef: ElementRef,
     private readonly cdr: ChangeDetectorRef
   ) {}
+
+  ngAfterViewInit() {
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      setTimeout(() => this.initScrollObserver(), 50);
+    }
+  }
+
+  ngOnDestroy() {
+    this.observer?.disconnect();
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    if (typeof window === 'undefined') return;
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    this.scrollProgress = height > 0 ? Math.min(100, Math.max(0, (winScroll / height) * 100)) : 0;
+    this.showBackToTop = winScroll > 380;
+  }
+
+  scrollToTop() {
+    if (typeof window === 'undefined') return;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  private initScrollObserver() {
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            this.observer?.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.08,
+      }
+    );
+
+    const elements = this.elementRef.nativeElement.querySelectorAll(
+      '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale'
+    );
+    elements.forEach((el: Element) => this.observer?.observe(el));
+  }
 
   toggleCodeDropdown(title: string, event: MouseEvent) {
     event.stopPropagation();
