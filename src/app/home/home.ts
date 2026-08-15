@@ -34,6 +34,13 @@ export interface ProjectCaseStudy {
   highlights: string[];
 }
 
+export interface CodeRepoOption {
+  label: string;
+  url: string;
+  badge: string;
+  type: 'frontend' | 'backend';
+}
+
 export interface Project {
   title: string;
   description: string;
@@ -45,6 +52,7 @@ export interface Project {
   tags: string[];
   demoUrl?: string;
   codeUrl?: string;
+  codeRepos?: CodeRepoOption[];
   caseStudy?: ProjectCaseStudy;
 }
 
@@ -76,8 +84,18 @@ export class Home {
   isDropdownOpen = false;
   activeCaseStudyProject: Project | null = null;
   activeExpandedImage: { image: string; title: string; desc: string } | null = null;
+  activeCodeDropdownTitle: string | null = null;
 
   constructor(private readonly elementRef: ElementRef) {}
+
+  toggleCodeDropdown(title: string, event: MouseEvent) {
+    event.stopPropagation();
+    this.activeCodeDropdownTitle = this.activeCodeDropdownTitle === title ? null : title;
+  }
+
+  closeCodeDropdown() {
+    this.activeCodeDropdownTitle = null;
+  }
 
   openCaseStudy(project: Project) {
     this.activeCaseStudyProject = project;
@@ -193,6 +211,9 @@ export class Home {
     const target = event.target as HTMLElement;
     if (!this.elementRef.nativeElement.querySelector('#custom-dropdown-container')?.contains(target)) {
       this.isDropdownOpen = false;
+    }
+    if (!target.closest('.code-dropdown-container')) {
+      this.activeCodeDropdownTitle = null;
     }
   }
 
@@ -428,6 +449,20 @@ Sent from Bunroeun's Portfolio`;
       roleBadge: 'Full-Stack Lead (Next.js + MySQL + Gemini)',
       tags: ['Next.js', 'MySQL', 'TypeScript', 'Tailwind CSS', 'Gemini AI'],
       demoUrl: 'https://skinme.store/',
+      codeRepos: [
+        {
+          label: 'Frontend Repository',
+          url: 'https://github.com/wayha168/Year4_Skin.me_FE',
+          badge: 'Frontend (React / Next.js)',
+          type: 'frontend'
+        },
+        {
+          label: 'Backend Repository',
+          url: 'https://github.com/wayha168/Year4-Skinme-BE',
+          badge: 'Backend (Node.js / MySQL)',
+          type: 'backend'
+        }
+      ]
     },
     {
       title: 'LED Media',
