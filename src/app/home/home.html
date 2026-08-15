@@ -488,10 +488,11 @@
       <!-- Filtered Project Cards Grid (3 Columns on Desktop) -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         <div *ngFor="let project of filteredProjects"
-          class="glass-card glass-card-hover rounded-2xl overflow-hidden border border-white/[0.08] flex flex-col group">
+          [ngClass]="activeCodeDropdownTitle === project.title ? 'z-50' : 'z-10'"
+          class="glass-card glass-card-hover rounded-2xl border border-white/[0.08] flex flex-col group relative transition-all">
 
           <!-- Image Showcase -->
-          <div class="relative w-full aspect-video bg-slate-950 overflow-hidden border-b border-white/[0.08]">
+          <div class="relative w-full aspect-video bg-slate-950 rounded-t-2xl overflow-hidden border-b border-white/[0.08]">
             <img [src]="project.image" [alt]="project.imageAlt"
               class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
 
@@ -576,10 +577,10 @@
                     </svg>
                   </button>
 
-                  <!-- Dropdown Popover Menu -->
+                  <!-- Dropdown Popover Menu (opens upward over the card with high z-index) -->
                   @if (activeCodeDropdownTitle === project.title) {
                   <div
-                    class="absolute bottom-full mb-2 right-0 left-0 sm:left-auto sm:w-64 p-2 rounded-2xl bg-slate-900/98 border border-white/20 shadow-2xl backdrop-blur-2xl z-30 flex flex-col gap-1.5 animate-in fade-in slide-in-from-bottom-2 duration-150"
+                    class="absolute bottom-full mb-2.5 right-0 left-0 sm:left-auto sm:w-64 p-2 rounded-2xl bg-[#0b1120] border border-blue-500/30 shadow-2xl backdrop-blur-2xl z-50 flex flex-col gap-1.5 animate-in fade-in slide-in-from-bottom-2 duration-150"
                   >
                     <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 border-b border-white/10 flex items-center justify-between">
                       <span>Source Repositories</span>

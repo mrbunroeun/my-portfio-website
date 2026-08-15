@@ -85,12 +85,28 @@ export class Home {
   activeCaseStudyProject: Project | null = null;
   activeExpandedImage: { image: string; title: string; desc: string } | null = null;
   activeCodeDropdownTitle: string | null = null;
+  isCodeDropdownDropUp = false;
 
   constructor(private readonly elementRef: ElementRef) {}
 
   toggleCodeDropdown(title: string, event: MouseEvent) {
     event.stopPropagation();
-    this.activeCodeDropdownTitle = this.activeCodeDropdownTitle === title ? null : title;
+    if (this.activeCodeDropdownTitle === title) {
+      this.activeCodeDropdownTitle = null;
+      return;
+    }
+
+    const button = (event.currentTarget as HTMLElement) || (event.target as HTMLElement);
+    if (button && typeof button.getBoundingClientRect === 'function') {
+      const rect = button.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      // If there is less than 170px of space below button in viewport, drop upwards (to top)
+      this.isCodeDropdownDropUp = spaceBelow < 170;
+    } else {
+      this.isCodeDropdownDropUp = false;
+    }
+
+    this.activeCodeDropdownTitle = title;
   }
 
   closeCodeDropdown() {
@@ -344,7 +360,7 @@ Sent from Bunroeun's Portfolio`;
       type: 'fullstack',
       category: 'Full-Stack & Multi-Vendor',
       roleBadge: 'Full-Stack Lead (Laravel + MySQL Backend)',
-      tags: ['Laravel', 'MySQL', 'PHP', 'Blade', 'Custom CSS', 'Multi-Vendor', 'Express Checkout'],
+      tags: ['Laravel', 'Blade', 'MySQL', 'PHP', 'CSS3'],
       caseStudy: {
         overview: 'A complete full-stack multi-vendor e-commerce platform built with Laravel and MySQL. It empowers customers to browse multi-category storefronts, place express orders with automated cart calculations, and offers a multi-step vendor application and admin verification lifecycle.',
         architecture: [
@@ -447,7 +463,7 @@ Sent from Bunroeun's Portfolio`;
       type: 'fullstack',
       category: 'Full-Stack & AI',
       roleBadge: 'Full-Stack Lead (Next.js + MySQL + Gemini)',
-      tags: ['Next.js', 'MySQL', 'TypeScript', 'Tailwind CSS', 'Gemini AI'],
+      tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'MySQL', 'Gemini AI'],
       demoUrl: 'https://skinme.store/',
       codeRepos: [
         {
@@ -472,7 +488,7 @@ Sent from Bunroeun's Portfolio`;
       type: 'fullstack',
       category: 'Full-Stack & Media',
       roleBadge: 'Full-Stack Contributor (Frontend + MySQL Backend)',
-      tags: ['Laravel', 'MySQL', 'PHP', 'Blade', 'Tailwind CSS', 'JavaScript'],
+      tags: ['Laravel', 'Blade', 'Tailwind CSS', 'JavaScript', 'MySQL', 'PHP'],
       demoUrl: 'https://ledmedia.com.kh/',
     },
     {
@@ -483,7 +499,7 @@ Sent from Bunroeun's Portfolio`;
       type: 'fullstack',
       category: 'Full-Stack Commercial',
       roleBadge: 'Frontend Lead & Backend Support',
-      tags: ['Laravel', 'MySQL', 'PHP', 'Blade', 'Tailwind CSS', 'JavaScript'],
+      tags: ['Laravel', 'Blade', 'Tailwind CSS', 'JavaScript', 'MySQL', 'PHP'],
       demoUrl: 'https://envystage.com/',
     },
     {
@@ -494,7 +510,7 @@ Sent from Bunroeun's Portfolio`;
       type: 'frontend',
       category: 'Angular Web App',
       roleBadge: 'Frontend Lead & UI Structure (Angular TS)',
-      tags: ['Angular', 'TypeScript', 'Tailwind CSS', 'Responsive UI', 'Vercel'],
+      tags: ['Angular', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
       demoUrl: 'https://angular-ts-psi.vercel.app/mobile-catering',
     },
     {
@@ -505,7 +521,7 @@ Sent from Bunroeun's Portfolio`;
       type: 'frontend',
       category: 'Enterprise Showcase',
       roleBadge: 'Frontend Developer (100% FE)',
-      tags: ['Frontend Development', 'JavaScript', 'Tailwind CSS', 'HTML5/CSS3', 'Responsive UI'],
+      tags: ['Laravel', 'Blade', 'JavaScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
       demoUrl: 'https://www.skkagriculture.com/',
     },
     {
@@ -516,7 +532,7 @@ Sent from Bunroeun's Portfolio`;
       type: 'frontend',
       category: 'Commercial Portal',
       roleBadge: 'Frontend Developer (100% FE)',
-      tags: ['Frontend Architecture', 'Blade', 'Tailwind CSS', 'JavaScript', 'Hostinger'],
+      tags: ['Laravel', 'Blade', 'Tailwind CSS', 'JavaScript', 'HTML5', 'CSS3'],
       demoUrl: 'https://darksalmon-chimpanzee-940996.hostingersite.com/',
     },
     {
@@ -527,7 +543,7 @@ Sent from Bunroeun's Portfolio`;
       type: 'frontend',
       category: 'Engineering & UX Redesign',
       roleBadge: 'UX/UI & Frontend Redesign (100% Overhaul)',
-      tags: ['UX/UI Redesign', 'Responsive Layout', 'Frontend Optimization', 'CSS/JS'],
+      tags: ['Laravel', 'Blade', 'JavaScript', 'HTML5', 'CSS3'],
       demoUrl: 'https://mastermepsolution.com.kh/',
     },
   ];
