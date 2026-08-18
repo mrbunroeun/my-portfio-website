@@ -133,8 +133,8 @@ export class Home implements AfterViewInit, OnDestroy {
         });
       },
       {
-        rootMargin: '0px 0px -20px 0px',
-        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.08,
       }
     );
 
@@ -349,9 +349,7 @@ Sent from Bunroeun's Portfolio`;
     window.open(telegramUrl, '_blank');
   }
 
-
-
-  readonly contactInfo = {
+  readonly contact = {
     name: 'Has Bunroeun',
     role: 'Full-Stack Developer & UX/UI Designer',
     degree: 'Bachelor of Information Technology Engineering',
@@ -359,6 +357,8 @@ Sent from Bunroeun's Portfolio`;
     phone: '0966928501',
     telegram: 'https://t.me/HasBunRoeun',
     telegramHandle: '@HasBunRoeun',
+    github: 'https://github.com/mrbunroeun',
+    githubHandle: '@mrbunroeun',
     linkedin: 'https://www.linkedin.com/in/has-bunroeun-b48761373',
     language: 'English (Upper-Intermediate)'
   };
@@ -374,58 +374,54 @@ Sent from Bunroeun's Portfolio`;
 
   readonly skillCategories: SkillCategory[] = [
     {
-      title: 'Frontend Development',
+      title: 'Frontend Engineering',
       icon: 'frontend',
-      badge: '2 Years Experience',
-      color: 'from-cyan-500 to-blue-500',
+      badge: 'Core Expertise',
+      color: 'from-blue-500 to-indigo-600',
       skills: [
-        'React.js',
-        'Next.js',
-        'Angular (Signals & Standalone)',
-        'TypeScript',
-        'JavaScript (ES6+)',
-        'HTML5 / CSS3',
-        'Tailwind CSS',
-        'Laravel Blade',
-        'Alpine.js',
-        'Responsive Design',
-        'Component Design'
+        'Angular 18+ (Signals, Standalone)',
+        'React & Next.js (App Router, SSR)',
+        'TypeScript (Strict Mode, Generics)',
+        'Tailwind CSS & Modern Flex/Grid',
+        'Responsive Design & Cross-Browser',
+        'JavaScript (ES6+, DOM, Async)',
+        'Blade Templates (Laravel FE)',
+        'HTML5 Semantic Markup & CSS3'
       ]
     },
     {
-      title: 'Backend & Database',
+      title: 'Backend & APIs',
       icon: 'backend',
-      badge: 'Full-Stack Foundations',
-      color: 'from-emerald-500 to-teal-500',
+      badge: 'Server Architecture',
+      color: 'from-emerald-500 to-teal-600',
       skills: [
-        'Laravel / PHP',
-        'MySQL Database',
-        'MVC Architecture',
-        'CRUD Development',
-        'RESTful API Design',
-        'Database Migrations',
-        'Form Validation & Auth'
+        'Node.js & Express.js REST APIs',
+        'Laravel (Routing, Controllers, ORM)',
+        'MySQL (Database Design, Queries)',
+        'PHP (Server Scripting & CRUD)',
+        'RESTful API Design & Integration',
+        'Authentication & JWT Sessions'
       ]
     },
     {
-      title: 'UX/UI Design',
+      title: 'UX/UI & Product Design',
       icon: 'design',
-      badge: 'Design Systems',
-      color: 'from-purple-500 to-pink-500',
+      badge: 'Visual Systems',
+      color: 'from-purple-500 to-pink-600',
       skills: [
-        'Figma (Auto-Layout & Components)',
-        'Wireframing & Prototyping',
-        'User Flows & Information Architecture',
-        'Mobile-First Layouts',
-        'Interactive UI Patterns (Carousels/Tabs)',
-        'User Psychology Foundations'
+        'Figma (Design Systems, Auto Layout)',
+        'User Flow & Wireframing',
+        'Interactive Prototyping',
+        'Responsive Breakpoint Systems',
+        'Color Theory & Typography',
+        'Micro-Interactions & Transitions'
       ]
     },
     {
-      title: 'DevOps, Tools & Coursework',
+      title: 'Tools & Workflows',
       icon: 'tools',
-      badge: 'Engineering Toolkit',
-      color: 'from-amber-500 to-orange-500',
+      badge: 'DevOps & Tooling',
+      color: 'from-amber-500 to-orange-600',
       skills: [
         'Git & GitHub Version Control',
         'Hostinger Deployment & .env Config',
@@ -462,6 +458,17 @@ Sent from Bunroeun's Portfolio`;
           type: 'backend'
         }
       ]
+    },
+    {
+      title: 'CWD Realty & Hospitality',
+      description: 'Modern condominium management, property leasing, and hospitality showcase platform in Phnom Penh. Developed complete responsive frontend interfaces, service catalogs, and interactive navigation.',
+      image: 'projects/cwd.png',
+      imageAlt: 'CWD Realty & Hospitality project preview',
+      types: ['frontend'],
+      category: 'Real Estate & Hospitality',
+      roleBadge: 'Frontend Developer (100% FE)',
+      tags: ['Laravel', 'Blade', 'Tailwind CSS', 'JavaScript', 'HTML5', 'CSS3'],
+      demoUrl: 'https://limegreen-koala-796363.hostingersite.com/',
     },
     {
       title: 'LED Media',
@@ -630,7 +637,7 @@ Sent from Bunroeun's Portfolio`;
           'Express checkout with modern digital payments (ABA / Bakong)',
           'Mobile-first responsive UI crafted with Custom CSS3'
         ]
-      }
+      } 
     },
     {
       title: 'LOQO Creative Agency',
