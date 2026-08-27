@@ -489,7 +489,7 @@
   </section>
 
 
-  <!-- ==================== FEATURED PROJECTS (FULL STACK, FRONTEND, BACKEND & UX/UI DESIGN) ==================== -->
+  <!-- ==================== FEATURED PROJECTS (FULL STACK, FRONTEND, BACKEND) ==================== -->
   <section id="projects" class="relative py-24 px-6 sm:px-10 overflow-hidden border-t border-white/[0.06]">
     <div class="max-w-7xl mx-auto flex flex-col gap-10">
 
@@ -498,49 +498,91 @@
         <div class="flex flex-col gap-2">
           <div class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-blue-400">
             <span class="w-6 h-0.5 bg-blue-500 rounded-full"></span>
-            <span>Project Portfolio</span>
+            <span>Web Applications</span>
           </div>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
             Featured <span
-              class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Projects & Designs</span>
+              class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Web Applications</span>
           </h2>
-          <p class="text-slate-400 text-base max-w-xl">
-            Filtered across core engineering and design disciplines: Full Stack, Frontend, Backend, and UX/UI Design.
+          <p class="text-slate-300 text-base max-w-xl leading-relaxed">
+            <span class="font-medium text-white">Full-Stack, Frontend & Backend</span> web applications engineered with Angular, React/Next.js, Vue.js, Laravel MVC, and MySQL.
           </p>
         </div>
 
-        <!-- Interactive Category Filter Tabs -->
-        <div
-          class="flex flex-wrap items-center gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-slate-900/90 border border-white/[0.08] backdrop-blur-md self-start md:self-auto shadow-lg shadow-black/20">
-          <button type="button" (click)="setProjectFilter('all')"
-            [ngClass]="selectedProjectFilter === 'all' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
-            All ({{ projects.length }})
-          </button>
+        <!-- Filter Tabs & Sort Selection -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full lg:w-auto justify-between lg:justify-end flex-wrap">
+          <!-- Interactive Technology & Role Filter Tabs -->
+          <div
+            class="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl bg-slate-900/90 border border-white/[0.08] backdrop-blur-md shadow-lg shadow-black/20">
+            <button type="button" (click)="setProjectFilter('all')"
+              [ngClass]="selectedProjectFilter === 'all' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+              <span>All</span>
+              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ projects.length }}</span>
+            </button>
 
-          <button type="button" (click)="setProjectFilter('fullstack')"
-            [ngClass]="selectedProjectFilter === 'fullstack' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
-            Full-Stack ({{ fullStackProjects.length }})
-          </button>
+            <button type="button" (click)="setProjectFilter('angular')"
+              [ngClass]="selectedProjectFilter === 'angular' ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-lg shadow-red-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+              <span>Angular</span>
+              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ angularProjects.length }}</span>
+            </button>
 
-          <button type="button" (click)="setProjectFilter('frontend')"
-            [ngClass]="selectedProjectFilter === 'frontend' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
-            Frontend ({{ frontendProjects.length }})
-          </button>
+            <button type="button" (click)="setProjectFilter('vue')"
+              [ngClass]="selectedProjectFilter === 'vue' ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+              <span>Vue.js</span>
+              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ vueProjects.length }}</span>
+            </button>
 
-          <button type="button" (click)="setProjectFilter('backend')"
-            [ngClass]="selectedProjectFilter === 'backend' ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
-            Backend ({{ backendProjects.length }})
-          </button>
+            <button type="button" (click)="setProjectFilter('react')"
+              [ngClass]="selectedProjectFilter === 'react' ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+              <span>React / Next.js</span>
+              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ reactProjects.length }}</span>
+            </button>
 
-          <button type="button" (click)="setProjectFilter('uiux')"
-            [ngClass]="selectedProjectFilter === 'uiux' ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95">
-            UX/UI Design ({{ uiuxProjects.length }})
-          </button>
+            <button type="button" (click)="setProjectFilter('laravel')"
+              [ngClass]="selectedProjectFilter === 'laravel' ? 'bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg shadow-orange-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+              <span>Laravel</span>
+              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ laravelProjects.length }}</span>
+            </button>
+
+            <button type="button" (click)="setProjectFilter('fullstack')"
+              [ngClass]="selectedProjectFilter === 'fullstack' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+              <span>Full-Stack</span>
+              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ fullStackProjects.length }}</span>
+            </button>
+
+            <button type="button" (click)="setProjectFilter('frontend')"
+              [ngClass]="selectedProjectFilter === 'frontend' ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+              <span>Frontend</span>
+              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ frontendProjects.length }}</span>
+            </button>
+
+            <button type="button" (click)="setProjectFilter('backend')"
+              [ngClass]="selectedProjectFilter === 'backend' ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+              <span>Backend</span>
+              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ backendProjects.length }}</span>
+            </button>
+          </div>
+
+          <!-- Sort Selection Control -->
+          <div class="flex items-center gap-2 self-end sm:self-auto shrink-0">
+            <span class="text-slate-400 text-xs font-medium uppercase tracking-wider hidden sm:inline-block">Sort:</span>
+            <select
+              [(ngModel)]="selectedSortOption"
+              (ngModelChange)="setSortOption($event)"
+              class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-white/10 text-slate-200 text-xs font-semibold outline-none focus:border-blue-500 cursor-pointer shadow-md">
+              <option value="default">Default Order</option>
+              <option value="name-asc">Name (A → Z)</option>
+              <option value="name-desc">Name (Z → A)</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -570,15 +612,15 @@
 
       <!-- Filtered Project Cards Grid (3 Columns on Desktop) -->
       @if (isFilterVisible) {
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 items-stretch">
         @for (project of filteredProjects; track project.title + '_' + filterAnimationKey; let idx = $index) {
         <div [style.z-index]="activeCodeDropdownTitle === project.title ? 60 : 1"
           [style.animation-delay]="(idx * 70) + 'ms'"
-          class="project-card-animate glass-card glass-card-hover rounded-2xl border border-white/[0.08] flex flex-col group relative transition-all">
+          class="project-card-animate glass-card glass-card-hover rounded-2xl border border-white/[0.08] flex flex-col h-full group relative transition-all">
 
           <!-- Image Showcase -->
           <div
-            class="relative w-full aspect-video bg-slate-950 rounded-t-2xl overflow-hidden border-b border-white/[0.08]">
+            class="relative w-full aspect-[16/10] bg-slate-950 rounded-t-2xl overflow-hidden border-b border-white/[0.08] shrink-0">
             <img [src]="project.image" [alt]="project.imageAlt"
               class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
 
@@ -602,18 +644,18 @@
           <!-- Card Content -->
           <div class="p-6 flex flex-col justify-between flex-1 gap-5">
             <div class="flex flex-col gap-2.5">
-              <h3 class="text-white text-xl font-bold group-hover:text-blue-400 transition-colors">
+              <h3 class="text-white text-xl font-bold group-hover:text-blue-400 transition-colors line-clamp-1">
                 {{ project.title }}
               </h3>
 
-              <p class="text-slate-300/80 text-sm leading-relaxed">
+              <p class="text-slate-300/80 text-sm leading-relaxed min-h-[4rem]">
                 {{ project.description }}
               </p>
             </div>
 
             <!-- Tech Tags -->
-            <div class="flex flex-col gap-4 pt-2">
-              <div class="flex flex-wrap gap-1.5">
+            <div class="flex flex-col gap-4 mt-auto">
+              <div class="flex flex-wrap gap-1.5 min-h-[1.75rem]">
                 <span *ngFor="let tag of project.tags; let i = index"
                   [ngClass]="i === 0 ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' : 'bg-white/[0.04] text-slate-300 border-white/[0.08]'"
                   class="text-[11px] font-medium px-2.5 py-1 rounded-lg border">
@@ -747,6 +789,193 @@
         }
       </div>
       }
+
+    </div>
+  </section>
+
+
+
+  <!-- ==================== UX/UI DESIGN & PROTOTYPES SHOWCASE ==================== -->
+  <section id="designs" class="relative py-24 px-6 sm:px-10 overflow-hidden border-t border-white/[0.06] bg-slate-950/40">
+    <!-- Ambient Radial Glows -->
+    <div class="pointer-events-none absolute inset-0 overflow-hidden -z-10">
+      <div class="absolute top-1/3 -right-32 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/4 -left-32 w-96 h-96 bg-pink-600/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto flex flex-col gap-12">
+
+      <!-- Section Header -->
+      <div class="scroll-reveal flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="flex flex-col gap-2">
+          <div class="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-purple-400">
+            <span class="w-6 h-0.5 bg-purple-500 rounded-full"></span>
+            <span>Design Systems & Interfaces</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+            UX/UI Design & <span
+              class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent">Prototyping</span>
+          </h2>
+          <p class="text-slate-400 text-base max-w-2xl">
+            User-centered interface architectures, interactive Figma prototypes, component design systems, and responsive wireframes built for optimal usability.
+          </p>
+        </div>
+
+        <!-- Figma Capabilities Badge -->
+        <div
+          class="flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-purple-500/10 border border-purple-500/25 text-purple-300 text-xs sm:text-sm font-semibold backdrop-blur-md self-start md:self-auto shadow-lg shadow-purple-500/10">
+          <svg class="w-4 h-4 text-purple-400" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.333 7.667a3.833 3.833 0 1 0 0-7.667h-6.666a3.833 3.833 0 0 0 0 7.667h6.666zM8.667 8.167h-.001a3.833 3.833 0 1 0 0 7.666h.001v-7.666zM15.333 8.167a3.833 3.833 0 1 0 3.834 3.833 3.833 3.833 0 0 0-3.834-3.833zM8.667 16.333a3.833 3.833 0 1 0 3.833 3.834v-3.834H8.667z"/>
+          </svg>
+          <span>Figma Auto-Layout & Design Tokens</span>
+        </div>
+      </div>
+
+      <!-- 4 Design Methodologies / Pillars -->
+      <div class="scroll-reveal grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+        <div class="glass-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] flex items-center gap-3.5 hover:border-purple-500/30 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/25 flex items-center justify-center text-purple-400 text-lg shrink-0">
+            📐
+          </div>
+          <div class="flex flex-col">
+            <h4 class="text-white font-bold text-xs sm:text-sm">Auto-Layout</h4>
+            <span class="text-slate-400 text-[11px]">Fluid dynamic resizing</span>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] flex items-center gap-3.5 hover:border-pink-500/30 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-pink-500/15 border border-pink-500/25 flex items-center justify-center text-pink-400 text-lg shrink-0">
+            🧩
+          </div>
+          <div class="flex flex-col">
+            <h4 class="text-white font-bold text-xs sm:text-sm">Design Tokens</h4>
+            <span class="text-slate-400 text-[11px]">Atomic reusable styles</span>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] flex items-center gap-3.5 hover:border-indigo-500/30 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/15 border border-indigo-500/25 flex items-center justify-center text-indigo-400 text-lg shrink-0">
+            🔄
+          </div>
+          <div class="flex flex-col">
+            <h4 class="text-white font-bold text-xs sm:text-sm">User Flows</h4>
+            <span class="text-slate-400 text-[11px]">Intuitive journeys & tests</span>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] flex items-center gap-3.5 hover:border-cyan-500/30 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center text-cyan-400 text-lg shrink-0">
+            📱
+          </div>
+          <div class="flex flex-col">
+            <h4 class="text-white font-bold text-xs sm:text-sm">Responsive Breakpoints</h4>
+            <span class="text-slate-400 text-[11px]">Mobile to Ultra-Wide</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- UX/UI Design Showcase Grid (3 Columns on Desktop like Web Applications) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 items-stretch">
+        @for (design of uiuxProjects; track design.title; let idx = $index) {
+        <div
+          [style.animation-delay]="(idx * 70) + 'ms'"
+          class="project-card-animate glass-card glass-card-hover rounded-2xl border border-white/[0.08] hover:border-purple-500/40 flex flex-col h-full group relative transition-all shadow-xl">
+
+          <!-- Image Showcase (Same aspect-[16/10] and top/left badges as Web Applications) -->
+          <div
+            class="relative w-full aspect-[16/10] bg-slate-950 rounded-t-2xl overflow-hidden border-b border-white/[0.08] cursor-pointer shrink-0"
+            (click)="openImagePreview(design.image, design.title, design.description)">
+            <img [src]="design.image" [alt]="design.imageAlt"
+              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+
+            <!-- Figma & Category Badge -->
+            <div class="absolute top-3 left-3 flex flex-wrap gap-2">
+              <span
+                class="px-2.5 py-1 rounded-lg bg-slate-900/90 backdrop-blur-md border border-purple-500/30 text-purple-300 text-xs font-semibold shadow-lg flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-purple-400" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.333 7.667a3.833 3.833 0 1 0 0-7.667h-6.666a3.833 3.833 0 0 0 0 7.667h6.666zM8.667 8.167h-.001a3.833 3.833 0 1 0 0 7.666h.001v-7.666zM15.333 8.167a3.833 3.833 0 1 0 3.834 3.833 3.833 3.833 0 0 0-3.834-3.833zM8.667 16.333a3.833 3.833 0 1 0 3.833 3.834v-3.834H8.667z"/>
+                </svg>
+                <span>{{ design.category }}</span>
+              </span>
+            </div>
+
+            <!-- Role Badge in Image Overlay -->
+            <div class="absolute bottom-2.5 left-3 right-3">
+              <span
+                class="inline-block px-2.5 py-1 rounded-lg bg-slate-950/85 backdrop-blur-md border border-purple-500/30 text-purple-200 text-[11px] font-semibold truncate max-w-full">
+                {{ design.roleBadge }}
+              </span>
+            </div>
+
+            <!-- Hover Zoom Overlay Hint -->
+            <div
+              class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-slate-900/95 text-white text-xs font-semibold border border-purple-500/30 shadow-2xl backdrop-blur-md flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                </svg>
+                <span>Click to Expand</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Card Content (Exact same p-6, spacing, title font, description min-h, tag layout as Web Apps) -->
+          <div class="p-6 flex flex-col justify-between flex-1 gap-5">
+            <div class="flex flex-col gap-2.5">
+              <h3 class="text-white text-xl font-bold group-hover:text-purple-300 transition-colors line-clamp-1">
+                {{ design.title }}
+              </h3>
+
+              <p class="text-slate-300/80 text-sm leading-relaxed min-h-[4rem]">
+                {{ design.description }}
+              </p>
+            </div>
+
+            <!-- Tech / Design Tags (Pinned to bottom) -->
+            <div class="flex flex-col gap-4 mt-auto">
+              <div class="flex flex-wrap gap-1.5 min-h-[1.75rem]">
+                <span *ngFor="let tag of design.tags; let i = index"
+                  [ngClass]="i === 0 ? 'bg-purple-500/20 text-purple-300 border-purple-500/30' : 'bg-white/[0.04] text-slate-300 border-white/[0.08]'"
+                  class="text-[11px] font-medium px-2.5 py-1 rounded-lg border">
+                  {{ tag }}
+                </span>
+              </div>
+
+              <!-- Action Buttons (Exact same height and style as Web Apps) -->
+              <div class="flex items-center gap-2.5 pt-3 border-t border-white/[0.08]">
+                <!-- Open in Figma Button -->
+                @if (design.figmaUrl) {
+                <a [href]="design.figmaUrl" target="_blank" rel="noopener noreferrer"
+                  class="flex-1 inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all no-underline cursor-pointer">
+                  <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.333 7.667a3.833 3.833 0 1 0 0-7.667h-6.666a3.833 3.833 0 0 0 0 7.667h6.666zM8.667 8.167h-.001a3.833 3.833 0 1 0 0 7.666h.001v-7.666zM15.333 8.167a3.833 3.833 0 1 0 3.834 3.833 3.833 3.833 0 0 0-3.834-3.833zM8.667 16.333a3.833 3.833 0 1 0 3.833 3.834v-3.834H8.667z"/>
+                  </svg>
+                  <span>Open in Figma</span>
+                  <svg class="w-3.5 h-3.5 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                }
+
+                <!-- Quick Zoom Button -->
+                <button type="button" (click)="openImagePreview(design.image, design.title, design.description)"
+                  class="inline-flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 text-xs font-semibold px-3.5 py-2.5 rounded-xl transition-all cursor-pointer">
+                  <svg class="w-3.5 h-3.5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                  </svg>
+                  <span>Preview</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        }
+      </div>
 
     </div>
   </section>

@@ -74,6 +74,9 @@ export interface ServiceOption {
   description: string;
 }
 
+export type ProjectFilterType = 'all' | 'angular' | 'vue' | 'react' | 'laravel' | 'fullstack' | 'frontend' | 'backend';
+export type SortOption = 'default' | 'name-asc' | 'name-desc';
+
 @Component({
   selector: 'app-home',
   imports: [CommonModule, FormsModule],
@@ -81,7 +84,8 @@ export interface ServiceOption {
   styleUrl: './home.css',
 })
 export class Home implements AfterViewInit, OnDestroy {
-  selectedProjectFilter: 'all' | 'fullstack' | 'frontend' | 'backend' | 'uiux' = 'all';
+  selectedProjectFilter: ProjectFilterType = 'all';
+  selectedSortOption: SortOption = 'default';
   isDropdownOpen = false;
   activeCaseStudyProject: Project | null = null;
   activeExpandedImage: { image: string; title: string; desc: string } | null = null;
@@ -290,22 +294,22 @@ export class Home implements AfterViewInit, OnDestroy {
 
   filterAnimationKey = 0;
 
-  setProjectFilter(filter: 'all' | 'fullstack' | 'frontend' | 'backend' | 'uiux') {
-    this.selectedProjectFilter = filter;
-    this.filterAnimationKey++;
-
-    // Unmount and remount project cards to force browser to run drop animation from 0% on EVERY card
-    this.isFilterVisible = false;
-    setTimeout(() => {
-      this.isFilterVisible = true;
-      this.cdr.markForCheck();
-    }, 15);
+  get angularProjects(): Project[] {
+    return this.projects.filter((p) => p.tags.some((t) => t.toLowerCase().includes('angular')));
   }
 
-  get filteredProjects(): Project[] {
-    const filter = this.selectedProjectFilter;
-    if (filter === 'all') return this.projects;
-    return this.projects.filter((p) => p.types.includes(filter));
+  get vueProjects(): Project[] {
+    return this.projects.filter((p) => p.tags.some((t) => t.toLowerCase().includes('vue')));
+  }
+
+  get reactProjects(): Project[] {
+    return this.projects.filter((p) =>
+      p.tags.some((t) => t.toLowerCase().includes('react') || t.toLowerCase().includes('next.js'))
+    );
+  }
+
+  get laravelProjects(): Project[] {
+    return this.projects.filter((p) => p.tags.some((t) => t.toLowerCase().includes('laravel')));
   }
 
   get fullStackProjects(): Project[] {
@@ -320,8 +324,51 @@ export class Home implements AfterViewInit, OnDestroy {
     return this.projects.filter((p) => p.types.includes('backend'));
   }
 
-  get uiuxProjects(): Project[] {
-    return this.projects.filter((p) => p.types.includes('uiux'));
+  setProjectFilter(filter: ProjectFilterType) {
+    this.selectedProjectFilter = filter;
+    this.filterAnimationKey++;
+
+    // Unmount and remount project cards to force browser to run drop animation from 0% on EVERY card
+    this.isFilterVisible = false;
+    setTimeout(() => {
+      this.isFilterVisible = true;
+      this.cdr.markForCheck();
+    }, 15);
+  }
+
+  setSortOption(sort: SortOption) {
+    this.selectedSortOption = sort;
+    this.filterAnimationKey++;
+    this.isFilterVisible = false;
+    setTimeout(() => {
+      this.isFilterVisible = true;
+      this.cdr.markForCheck();
+    }, 15);
+  }
+
+  get filteredProjects(): Project[] {
+    let list = [...this.projects];
+    const filter = this.selectedProjectFilter;
+
+    if (filter === 'angular') {
+      list = this.angularProjects;
+    } else if (filter === 'vue') {
+      list = this.vueProjects;
+    } else if (filter === 'react') {
+      list = this.reactProjects;
+    } else if (filter === 'laravel') {
+      list = this.laravelProjects;
+    } else if (filter === 'fullstack' || filter === 'frontend' || filter === 'backend') {
+      list = list.filter((p) => p.types.includes(filter));
+    }
+
+    if (this.selectedSortOption === 'name-asc') {
+      list.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (this.selectedSortOption === 'name-desc') {
+      list.sort((a, b) => b.title.localeCompare(a.title));
+    }
+
+    return list;
   }
 
   submitTelegramForm() {
@@ -434,6 +481,18 @@ Sent from Bunroeun's Portfolio`;
   ];
 
   readonly projects: Project[] = [
+    {
+      title: 'ScripBaa Portfolio Showcase',
+      description: 'Modern, responsive frontend portfolio and web showcase platform built with Vue.js, featuring vibrant gradient visual styling, dynamic UI interactions, smooth navigation, and component-driven architecture.',
+      image: 'projects/script_portfolio.png',
+      imageAlt: 'ScripBaa Vue Portfolio project preview',
+      types: ['frontend'],
+      category: 'Vue.js Web App',
+      roleBadge: 'Frontend Developer (Vue.js)',
+      tags: ['Vue.js', 'JavaScript', 'HTML5', 'CSS3', 'Responsive UI'],
+      demoUrl: 'https://portforlio-example.vercel.app/',
+      codeUrl: 'https://github.com/mrbunroeun/vue.js_project',
+    },
     {
       title: 'SKIN.ME AI Ecommerce',
       description: 'Full-stack skincare ecommerce and personalized recommendation web application featuring an integrated AI skincare chatbot assistant.',
@@ -638,7 +697,10 @@ Sent from Bunroeun's Portfolio`;
           'Mobile-first responsive UI crafted with Custom CSS3'
         ]
       } 
-    },
+    }
+  ];
+
+  readonly uiuxProjects: Project[] = [
     {
       title: 'LOQO Creative Agency',
       description: 'High-conversion digital agency landing page created in Figma exploring sticky scroll interactions, modern dark theme aesthetics, typography rules, and structured design tokens.',
@@ -647,7 +709,7 @@ Sent from Bunroeun's Portfolio`;
       types: ['uiux'],
       category: 'UX/UI Design',
       roleBadge: 'Figma UI/UX & Sticky Scroll',
-      tags: ['Figma', 'UI/UX Design', 'Design Systems', 'Prototyping'],
+      tags: ['Figma', 'UI/UX Design', 'Design Systems', 'Prototyping', 'Sticky Scroll'],
       figmaUrl: 'https://www.figma.com/design/2wk7NyrXq0fTNh1HMVmr3W/practice--lily-barkery-and-LOQO?node-id=122-6&p=f&t=oklMZAHA4Xv3HVVW-0',
     },
     {
