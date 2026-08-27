@@ -509,80 +509,64 @@
           </p>
         </div>
 
-        <!-- Filter Tabs & Sort Selection -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full lg:w-auto justify-between lg:justify-end flex-wrap">
-          <!-- Interactive Technology & Role Filter Tabs -->
-          <div
-            class="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl bg-slate-900/90 border border-white/[0.08] backdrop-blur-md shadow-lg shadow-black/20">
-            <button type="button" (click)="setProjectFilter('all')"
-              [ngClass]="selectedProjectFilter === 'all' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
-              <span>All</span>
-              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ projects.length }}</span>
-            </button>
+        <!-- Interactive Technology & Role Filter Tabs -->
+        <div
+          class="flex flex-wrap items-center gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-slate-900/90 border border-white/[0.08] backdrop-blur-md self-start md:self-auto shadow-lg shadow-black/20">
+          <button type="button" (click)="setProjectFilter('all')"
+            [ngClass]="selectedProjectFilter === 'all' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+            <span>All</span>
+            <span class="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px]">{{ projects.length }}</span>
+          </button>
 
-            <button type="button" (click)="setProjectFilter('angular')"
-              [ngClass]="selectedProjectFilter === 'angular' ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-lg shadow-red-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
-              <span>Angular</span>
-              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ angularProjects.length }}</span>
-            </button>
+          <button type="button" (click)="setProjectFilter('angular')"
+            [ngClass]="selectedProjectFilter === 'angular' ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-lg shadow-red-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+            <span>Angular</span>
+            <span class="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px]">{{ angularProjects.length }}</span>
+          </button>
 
-            <button type="button" (click)="setProjectFilter('vue')"
-              [ngClass]="selectedProjectFilter === 'vue' ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
-              <span>Vue.js</span>
-              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ vueProjects.length }}</span>
-            </button>
+          <button type="button" (click)="setProjectFilter('vue')"
+            [ngClass]="selectedProjectFilter === 'vue' ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+            <span>Vue.js</span>
+            <span class="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px]">{{ vueProjects.length }}</span>
+          </button>
 
-            <button type="button" (click)="setProjectFilter('react')"
-              [ngClass]="selectedProjectFilter === 'react' ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
-              <span>React / Next.js</span>
-              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ reactProjects.length }}</span>
-            </button>
+          <button type="button" (click)="setProjectFilter('react')"
+            [ngClass]="selectedProjectFilter === 'react' ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+            <span>React / Next.js</span>
+            <span class="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px]">{{ reactProjects.length }}</span>
+          </button>
 
-            <button type="button" (click)="setProjectFilter('laravel')"
-              [ngClass]="selectedProjectFilter === 'laravel' ? 'bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg shadow-orange-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
-              <span>Laravel</span>
-              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ laravelProjects.length }}</span>
-            </button>
+          <button type="button" (click)="setProjectFilter('laravel')"
+            [ngClass]="selectedProjectFilter === 'laravel' ? 'bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg shadow-orange-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+            <span>Laravel</span>
+            <span class="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px]">{{ laravelProjects.length }}</span>
+          </button>
 
-            <button type="button" (click)="setProjectFilter('fullstack')"
-              [ngClass]="selectedProjectFilter === 'fullstack' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
-              <span>Full-Stack</span>
-              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ fullStackProjects.length }}</span>
-            </button>
+          <button type="button" (click)="setProjectFilter('fullstack')"
+            [ngClass]="selectedProjectFilter === 'fullstack' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+            <span>Full-Stack</span>
+            <span class="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px]">{{ fullStackProjects.length }}</span>
+          </button>
 
-            <button type="button" (click)="setProjectFilter('frontend')"
-              [ngClass]="selectedProjectFilter === 'frontend' ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
-              <span>Frontend</span>
-              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ frontendProjects.length }}</span>
-            </button>
+          <button type="button" (click)="setProjectFilter('frontend')"
+            [ngClass]="selectedProjectFilter === 'frontend' ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+            <span>Frontend</span>
+            <span class="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px]">{{ frontendProjects.length }}</span>
+          </button>
 
-            <button type="button" (click)="setProjectFilter('backend')"
-              [ngClass]="selectedProjectFilter === 'backend' ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
-              class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
-              <span>Backend</span>
-              <span class="px-1.5 py-0.2 rounded-md bg-white/10 text-[10px]">{{ backendProjects.length }}</span>
-            </button>
-          </div>
-
-          <!-- Sort Selection Control -->
-          <div class="flex items-center gap-2 self-end sm:self-auto shrink-0">
-            <span class="text-slate-400 text-xs font-medium uppercase tracking-wider hidden sm:inline-block">Sort:</span>
-            <select
-              [(ngModel)]="selectedSortOption"
-              (ngModelChange)="setSortOption($event)"
-              class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-white/10 text-slate-200 text-xs font-semibold outline-none focus:border-blue-500 cursor-pointer shadow-md">
-              <option value="default">Default Order</option>
-              <option value="name-asc">Name (A → Z)</option>
-              <option value="name-desc">Name (Z → A)</option>
-            </select>
-          </div>
+          <button type="button" (click)="setProjectFilter('backend')"
+            [ngClass]="selectedProjectFilter === 'backend' ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/25' : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer active:scale-95 flex items-center gap-1.5">
+            <span>Backend</span>
+            <span class="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px]">{{ backendProjects.length }}</span>
+          </button>
         </div>
       </div>
 

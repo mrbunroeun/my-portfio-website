@@ -75,7 +75,6 @@ export interface ServiceOption {
 }
 
 export type ProjectFilterType = 'all' | 'angular' | 'vue' | 'react' | 'laravel' | 'fullstack' | 'frontend' | 'backend';
-export type SortOption = 'default' | 'name-asc' | 'name-desc';
 
 @Component({
   selector: 'app-home',
@@ -85,7 +84,6 @@ export type SortOption = 'default' | 'name-asc' | 'name-desc';
 })
 export class Home implements AfterViewInit, OnDestroy {
   selectedProjectFilter: ProjectFilterType = 'all';
-  selectedSortOption: SortOption = 'default';
   isDropdownOpen = false;
   activeCaseStudyProject: Project | null = null;
   activeExpandedImage: { image: string; title: string; desc: string } | null = null;
@@ -336,39 +334,22 @@ export class Home implements AfterViewInit, OnDestroy {
     }, 15);
   }
 
-  setSortOption(sort: SortOption) {
-    this.selectedSortOption = sort;
-    this.filterAnimationKey++;
-    this.isFilterVisible = false;
-    setTimeout(() => {
-      this.isFilterVisible = true;
-      this.cdr.markForCheck();
-    }, 15);
-  }
-
   get filteredProjects(): Project[] {
-    let list = [...this.projects];
     const filter = this.selectedProjectFilter;
 
     if (filter === 'angular') {
-      list = this.angularProjects;
+      return this.angularProjects;
     } else if (filter === 'vue') {
-      list = this.vueProjects;
+      return this.vueProjects;
     } else if (filter === 'react') {
-      list = this.reactProjects;
+      return this.reactProjects;
     } else if (filter === 'laravel') {
-      list = this.laravelProjects;
+      return this.laravelProjects;
     } else if (filter === 'fullstack' || filter === 'frontend' || filter === 'backend') {
-      list = list.filter((p) => p.types.includes(filter));
+      return this.projects.filter((p) => p.types.includes(filter));
     }
 
-    if (this.selectedSortOption === 'name-asc') {
-      list.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (this.selectedSortOption === 'name-desc') {
-      list.sort((a, b) => b.title.localeCompare(a.title));
-    }
-
-    return list;
+    return this.projects;
   }
 
   submitTelegramForm() {
@@ -412,11 +393,11 @@ Sent from Bunroeun's Portfolio`;
 
   readonly relevantCoursework = [
     { title: 'User Interface Design & Development', icon: '🎨', badge: 'UI/UX', desc: 'Design systems, auto-layout, typography, breakpoints & interactive patterns.' },
-    { title: 'Artificial Intelligence & Ethics', icon: '🤖', badge: 'AI Engine', desc: 'AI models, prompt engineering, Gemini API integrations & tech ethics.' },
+    { title: 'Artificial Intelligence & Prompt Engineering', icon: '🤖', badge: 'AI & LLMs', desc: 'AI models, prompt engineering, Gemini API integrations, AI-assisted coding & ethics.' },
+    { title: 'Search Engine Optimization & Web Performance', icon: '🔍', badge: 'SEO & Core Vitals', desc: 'Technical SEO, meta tags, semantic HTML, schema structured data & indexability.' },
     { title: 'Project Management & Agile', icon: '📊', badge: 'Delivery', desc: 'Sprint planning, client iteration cycles & multi-project coordination.' },
     { title: 'Cryptography & Security', icon: '🔐', badge: 'Security', desc: 'RSA, Diffie-Hellman key exchange, SHA-512 & data security.' },
-    { title: 'Software Testing & QA', icon: '🧪', badge: 'Quality', desc: 'Test-Driven Development (TDD), xUnit & Moq mocking frameworks.' },
-    { title: 'Game Development (Unity/C#)', icon: '🎮', badge: 'Interactive', desc: 'Game architecture, 2D physics & interactive state loops (Flappy clone).' }
+    { title: 'Software Testing & QA', icon: '🧪', badge: 'Quality', desc: 'Test-Driven Development (TDD), xUnit & Moq mocking frameworks.' }
   ];
 
   readonly skillCategories: SkillCategory[] = [
@@ -426,14 +407,15 @@ Sent from Bunroeun's Portfolio`;
       badge: 'Core Expertise',
       color: 'from-blue-500 to-indigo-600',
       skills: [
-        'Angular 18+ (Signals, Standalone)',
+        'Angular 21+ (Signals, Standalone)',
+        'Vue.js (Composition API, Components)',
         'React & Next.js (App Router, SSR)',
         'TypeScript (Strict Mode, Generics)',
         'Tailwind CSS & Modern Flex/Grid',
+        'SEO & Semantic Markup (Meta, Open Graph)',
         'Responsive Design & Cross-Browser',
         'JavaScript (ES6+, DOM, Async)',
-        'Blade Templates (Laravel FE)',
-        'HTML5 Semantic Markup & CSS3'
+        'Blade Templates (Laravel FE)'
       ]
     },
     {
@@ -465,16 +447,18 @@ Sent from Bunroeun's Portfolio`;
       ]
     },
     {
-      title: 'Tools & Workflows',
+      title: 'AI, SEO & Workflows',
       icon: 'tools',
-      badge: 'DevOps & Tooling',
+      badge: 'DevOps & Emerging Tech',
       color: 'from-amber-500 to-orange-600',
       skills: [
+        'AI Tooling & Prompt Engineering (LLMs)',
+        'Gemini AI API & Intelligent Workflows',
+        'SEO Best Practices & Core Web Vitals',
         'Git & GitHub Version Control',
         'Hostinger Deployment & .env Config',
-        'Unity / C# Game Development',
-        'Gemini AI API Integration',
         'Software Testing (xUnit/Moq, TDD)',
+        'Unity / C# Game Development',
         'Cryptography (RSA, Diffie-Hellman, SHA-512)'
       ]
     }
