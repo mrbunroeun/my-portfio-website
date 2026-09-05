@@ -478,6 +478,18 @@ Sent from Bunroeun's Portfolio`;
       codeUrl: 'https://github.com/mrbunroeun/vue.js_project',
     },
     {
+      title: 'Realestate Toyal Showcase',
+      description: 'Modern luxury real estate and property showcase platform built with Vue.js, featuring elegant typography, responsive property cards, interactive catalog navigation, and modern UI styling.',
+      image: 'projects/realestate-toyal.jpg',
+      imageAlt: 'Realestate Toyal project preview',
+      types: ['frontend'],
+      category: 'Vue.js Web App',
+      roleBadge: 'Frontend Developer (Vue.js)',
+      tags: ['Vue.js', 'JavaScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
+      demoUrl: 'https://realestate-toyal.vercel.app/',
+      codeUrl: 'https://github.com/mrbunroeun/RealestateToyal.git',
+    },
+    {
       title: 'SKIN.ME AI Ecommerce',
       description: 'Full-stack skincare ecommerce and personalized recommendation web application featuring an integrated AI skincare chatbot assistant.',
       image: 'projects/SKINME.png',
