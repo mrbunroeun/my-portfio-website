@@ -592,6 +592,18 @@ Sent from Bunroeun's Portfolio`;
       demoUrl: 'https://angular-ts-psi.vercel.app/mobile-catering',
     },
     {
+      title: 'Bunroeun Developer Portfolio',
+      description: 'Modern high-performance developer portfolio and personal showcase website built with Angular, TypeScript, and Tailwind CSS, featuring interactive category filters, glassmorphism aesthetics, fluid animations, and responsive architecture.',
+      image: 'additional_project/portfolio.png',
+      imageAlt: 'Bunroeun Angular Portfolio project preview',
+      types: ['frontend'],
+      category: 'Angular Web App',
+      roleBadge: 'Frontend Lead & UI Architecture (Angular + TS)',
+      tags: ['Angular', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3', 'Responsive UI'],
+      demoUrl: 'https://my-portfio-website.vercel.app/',
+      codeUrl: 'https://github.com/mrbunroeun/learning-basic-ts-angular.git',
+    },
+    {
       title: 'Laravel Multi-Vendor E-Commerce',
       description: 'Full-stack multi-vendor marketplace featuring dynamic storefront templates, vendor onboarding with admin approval workflows, express checkout (ABA / Bakong), and relational MySQL database architecture.',
       image: 'projects/laravel_ecommerce.png',
