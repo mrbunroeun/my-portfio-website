@@ -523,7 +523,7 @@ Sent from Bunroeun's Portfolio`;
       category: 'Real Estate & Hospitality',
       roleBadge: 'Frontend Developer (100% FE)',
       tags: ['Laravel', 'Blade', 'Tailwind CSS', 'JavaScript', 'HTML5', 'CSS3'],
-      demoUrl: 'https://limegreen-koala-796363.hostingersite.com/',
+      demoUrl: 'https://cwdrealty.com/',
     },
     {
       title: 'LED Media',
