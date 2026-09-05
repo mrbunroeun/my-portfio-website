@@ -1,6 +1,8 @@
-import { Component, ElementRef, HostListener, ChangeDetectorRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, ElementRef, HostListener, ChangeDetectorRef, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 export interface SkillCategory {
   title: string;
@@ -78,11 +80,11 @@ export type ProjectFilterType = 'all' | 'angular' | 'vue' | 'react' | 'laravel' 
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements AfterViewInit, OnDestroy {
+export class Home implements OnInit, AfterViewInit, OnDestroy {
   selectedProjectFilter: ProjectFilterType = 'all';
   isDropdownOpen = false;
   activeCaseStudyProject: Project | null = null;
@@ -94,11 +96,47 @@ export class Home implements AfterViewInit, OnDestroy {
   scrollProgress = 0;
   showBackToTop = false;
   private observer: IntersectionObserver | null = null;
+  private routeParamSub: Subscription | null = null;
+  private queryParamSub: Subscription | null = null;
 
   constructor(
     private readonly elementRef: ElementRef,
-    private readonly cdr: ChangeDetectorRef
+    private readonly cdr: ChangeDetectorRef,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
   ) {}
+
+  ngOnInit() {
+    this.routeParamSub = this.route.paramMap.subscribe((params) => {
+      const routeFilter = params.get('filter');
+      if (routeFilter && this.isValidFilter(routeFilter)) {
+        this.applyFilter(routeFilter.toLowerCase() as ProjectFilterType, true);
+        return;
+      }
+
+      this.queryParamSub?.unsubscribe();
+      this.queryParamSub = this.route.queryParamMap.subscribe((queryParams) => {
+        const queryFilter = queryParams.get('filter');
+        if (queryFilter && this.isValidFilter(queryFilter)) {
+          this.applyFilter(queryFilter.toLowerCase() as ProjectFilterType, true);
+        }
+      });
+    });
+  }
+
+  isValidFilter(filter: string): boolean {
+    const validFilters: ProjectFilterType[] = [
+      'all',
+      'angular',
+      'vue',
+      'react',
+      'laravel',
+      'fullstack',
+      'frontend',
+      'backend'
+    ];
+    return validFilters.includes(filter.toLowerCase() as ProjectFilterType);
+  }
 
   ngAfterViewInit() {
     if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
@@ -108,6 +146,8 @@ export class Home implements AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.observer?.disconnect();
+    this.routeParamSub?.unsubscribe();
+    this.queryParamSub?.unsubscribe();
   }
 
   @HostListener('window:scroll')
@@ -323,6 +363,17 @@ export class Home implements AfterViewInit, OnDestroy {
   }
 
   setProjectFilter(filter: ProjectFilterType) {
+    this.applyFilter(filter, false);
+
+    // Update query params in the URL bar for easy link sharing without full reload
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: filter === 'all' ? {} : { filter },
+      queryParamsHandling: '',
+    });
+  }
+
+  private applyFilter(filter: ProjectFilterType, shouldScrollToSection = false) {
     this.selectedProjectFilter = filter;
     this.filterAnimationKey++;
 
@@ -331,6 +382,15 @@ export class Home implements AfterViewInit, OnDestroy {
     setTimeout(() => {
       this.isFilterVisible = true;
       this.cdr.markForCheck();
+
+      if (shouldScrollToSection && typeof window !== 'undefined') {
+        setTimeout(() => {
+          const el = document.getElementById('projects');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 120);
+      }
     }, 15);
   }
 
@@ -602,6 +662,18 @@ Sent from Bunroeun's Portfolio`;
       tags: ['Angular', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3', 'Responsive UI'],
       demoUrl: 'https://my-portfio-website.vercel.app/',
       codeUrl: 'https://github.com/mrbunroeun/learning-basic-ts-angular.git',
+    },
+    {
+      title: 'Realestate Toyal (Angular Edition)',
+      description: 'Modern luxury real estate and property showcase web application built with Angular and TypeScript, featuring standalone component architecture, elegant typography, interactive property catalogs, and fluid responsive layouts.',
+      image: 'projects/realestate-toyal.jpg',
+      imageAlt: 'Realestate Toyal Angular project preview',
+      types: ['frontend'],
+      category: 'Angular Web App',
+      roleBadge: 'Frontend Developer (Angular + TS)',
+      tags: ['Angular', 'TypeScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
+      demoUrl: 'https://realestate-toyal-using-agular-nine.vercel.app/',
+      codeUrl: 'https://github.com/mrbunroeun/realestate-toyal-using-agular.git',
     },
     {
       title: 'Laravel Multi-Vendor E-Commerce',
